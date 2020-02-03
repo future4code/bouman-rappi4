@@ -62,20 +62,33 @@ export class SignUpPage extends React.Component {
 
     }
 
+    handleChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const { username, email, password } = this.state
+        this.props.signup(username, email, password)
+    }
+
+
     render() {
         const { goToLoginPage, goToAdressPage } = this.props
-        
+
         return (
             <div>
                 <HeaderSignUpPage>
-                    <BackButton onClick={goToLoginPage} src={BackIcon}/>
+                    <BackButton onClick={goToLoginPage} src={BackIcon} />
                 </HeaderSignUpPage>
                 <StyledHeaderForms>
-                    <StyledImgForms src={LogoLogin}/>
+                    <StyledImgForms src={LogoLogin} />
                 </StyledHeaderForms>
                 <LoginWrapper onSubmit={this.handleOnSubmit}>
                     <h1>Cadastre-se</h1>
-                    {CadastroForm .map(input =>(
+                    {CadastroForm.map(input => (
                         <StyledTextField
                             onChange={this.handleFieldChange}
                             name={input.name}
@@ -88,18 +101,18 @@ export class SignUpPage extends React.Component {
                         />
                     ))}
                     <StyledButtonForms type="submit" onClick={goToAdressPage} >Criar</StyledButtonForms>
-                    <BackButton onClick={goToLoginPage} src={BackIcon}/>
+                    <BackButton onClick={goToLoginPage} src={BackIcon} />
                 </LoginWrapper>
             </div>
         )
     }
-} 
+}
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
 
 })
 
-const mapDispatchToProps = dispatch =>({
+const mapDispatchToProps = dispatch => ({
     goToLoginPage: () => dispatch(push(routes.loginPage)),
     goToAdressPage: () => dispatch(push(routes.adressFormPage))
 })
@@ -107,4 +120,4 @@ const mapDispatchToProps = dispatch =>({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-) (SignUpPage);
+)(SignUpPage);
