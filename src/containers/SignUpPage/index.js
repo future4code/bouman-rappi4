@@ -14,29 +14,33 @@ const CadastroForm = [
         label: 'Nome ',
         placeholder: 'Nome e Sobrenome',
         required: true,
-        pattern: "[A-Za-z]"
-    },
-    {
+        pattern: "[A-Za-z]",
+        variant: "outlined",
+     },
+     {
         name: 'email',
         type: 'email',
         label: 'E-mail: ',
         placeholder: 'email@email.com',
         required: true,
         pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
-    },
-    {
-        name: 'password',
-        type: 'password',
-        label: 'CPF',
-        placeholder: '000.000.000-00',
-        required: true,
-    },
-    {
+        variant: "outlined",
+     },
+     {
+         name: 'password',
+         type: 'password',
+         label: 'CPF',
+         placeholder: '000.000.000-00',
+         required: true,
+         variant: "outlined",
+     },
+     {
         name: 'password',
         type: 'password',
         label: 'Senha',
         placeholder: 'Mínimo 6 caracteres',
         required: true,
+        variant: "outlined",
     },
     {
         name: 'password',
@@ -44,6 +48,7 @@ const CadastroForm = [
         label: 'Confirmar',
         placeholder: 'Confirme a senha anterior',
         required: true,
+        variant: "outlined",
     },
 ]
 
@@ -92,6 +97,7 @@ export class SignUpPage extends React.Component {
                             required={input.required}
                             placeholder={input.placeholder}
                             pattern={input.pattern}
+                            variant={input.variant}
                         />
                     ))}
                     <StyledButtonForms type="submit" onClick={goToAdressPage} >Criar</StyledButtonForms>

@@ -12,7 +12,8 @@ const AdressForm = [
         label: 'Logradouro ',
         placeholder: 'Rua/AV.',
         required: true,
-        pattern: "[A-Za-z]"
+        pattern: "[A-Za-z]",
+        variant: "outlined",
      },
      {
         name: 'email',
@@ -21,6 +22,7 @@ const AdressForm = [
         placeholder: 'Número',
         required: true,
         pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
+        variant: "outlined",
      },
      {
          name: 'password',
@@ -28,6 +30,7 @@ const AdressForm = [
          label: 'Complemento',
          placeholder: 'Apto./Bloco',
          required: true,
+         variant: "outlined",
      },
      {
         name: 'password',
@@ -35,6 +38,7 @@ const AdressForm = [
         label: 'Bairro',
         placeholder: 'Bairro',
         required: true,
+        variant: "outlined",
     },
     {
         name: 'password',
@@ -42,6 +46,7 @@ const AdressForm = [
         label: 'Cidade',
         placeholder: 'Cidade',
         required: true,
+        variant: "outlined",
     },
     {
         name: 'password',
@@ -49,6 +54,7 @@ const AdressForm = [
         label: 'Estado',
         placeholder: 'Estado',
         required: true,
+        variant: "outlined",
     },
 ]
 
@@ -96,6 +102,7 @@ export class AdressFormPage extends React.Component {
                             required={input.required}
                             placeholder={input.placeholder}
                             pattern={input.pattern}
+                            variant={input.variant}
                         />
                     ))}
                     <StyledButtonForms onClick={goToFeedPage}>Salvar</StyledButtonForms>
