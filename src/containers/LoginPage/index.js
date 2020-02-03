@@ -34,6 +34,7 @@ export class LoginPage extends React.Component {
                         type="email"
                         label="E-mail"
                         required
+                        variant="outlined"
 
                     />
                     <StyledTextField
@@ -42,8 +43,9 @@ export class LoginPage extends React.Component {
                         type="password"
                         label="Password"
                         required
-
+                        variant="outlined"
                     />
+                    
                     <StyledButtonForms onClick={goToFeedPage}>Entrar</StyledButtonForms>
                     <span >Não possui Cadastro?<button onClick={goToSignUpPage}>Clique aqui.</button></span>
                 </LoginWrapper>
