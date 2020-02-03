@@ -62,6 +62,19 @@ export class AdressFormPage extends React.Component {
 
     }
 
+
+    handleChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const { username, email, password } = this.state
+        this.props.signup(username, email, password)
+    }
+
     render() {
         const { goToLoginPage, goToFeedPage, goToSignUpPage } = this.props
         
