@@ -18,18 +18,15 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Footer from '../Footer';
+
 import { getProducts } from '../../action/products'
+import Header from '../../components/Header';
+
 
 const FeedContainer = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-`
-
-const StyledHeader = styled.header`
-    text-align: center;
-    border-bottom: 1px solid lightgray;
-    width: 100%;
 `
 
 const StyledTextField = styled(TextField)`
@@ -102,12 +99,9 @@ componentDidMount() {
    
 
     render() {
-        const { goToFeedPage } = this.props;
         return (
             <FeedContainer>
-                <StyledHeader>
-                    <h3>Rappi4</h3>                    
-                </StyledHeader>
+                <Header title="Rappi4"/>
                 <StyledTextField type="search" placeholder="Restaurante" variant="outlined" 
                     InputProps={{
                         startAdornment: (
