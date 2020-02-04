@@ -4,7 +4,12 @@ import TextField from "@material-ui/core/TextField";
 
 // header
 export const StyledHeader = styled.header `
-
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #707070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 // Loader

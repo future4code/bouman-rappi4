@@ -1,22 +1,22 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { CardContainer, CardContainerHeader, CardAdressSection } from './styled';
+import { CardContainer, CardAdressSection, CardMain } from './styled';
 import { StyledButtonForms } from "../../style/styled";
 import Footer from '../Footer';
-import { push } from 'connected-react-router';
-import { routes } from '../Router'
+import Header from '../../components/Header';
 
 export class CartPage extends Component {
     render() {
         const { goToFeedPage } = this.props
         return (
             <CardContainer>
-                <CardContainerHeader>
-                    <p>Meu Carrinho</p>
-                </CardContainerHeader>
+                <Header title="Meu Carrinho"/>
                 <CardAdressSection>
 
                 </CardAdressSection>
+                <CardMain>
+                    <p>Carrinho Vazio</p>
+                </CardMain>
                 <StyledButtonForms onClick={goToFeedPage}>Entrar</StyledButtonForms>
                 <Footer/>
             </CardContainer>
@@ -29,7 +29,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    goToFeedPage: () => dispatch(push(routes.feedPage))
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage)
