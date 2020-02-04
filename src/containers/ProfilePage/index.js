@@ -2,11 +2,12 @@ import React from'react';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import { Title, Linha, Paragraph , EditContent, Adress, ParagraphDefaultAdress, ParagraphAdress, HistoricParagraph, HistoricLine, HistoricContainer, ContainerOrderCard, TitleOrder, DateOrderCard, SubtotalOrder, ParagraphOnly, EditData, EditAdress } from '../../style/profilePage';
-import Edited from '../../imagens/ícones/edit.svg'
+import Edited from "../../imagens/ícones/edit.svg"
+import { Footer } from '../Footer';
 
 export const AppWrapper = styled.div`
 width: 100%;
-heigth: 100%;
+height: 100%;
 `
 
 class ProfilePage extends React.Component {
@@ -49,6 +50,7 @@ class ProfilePage extends React.Component {
                 <SubtotalOrder>SUBTOTAL R$67,00</SubtotalOrder>
                 
             </ContainerOrderCard>
+            <Footer />
         </AppWrapper>
       );
     }
