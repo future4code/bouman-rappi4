@@ -65,7 +65,6 @@ export class AdressFormPage extends React.Component {
         this.state = {
             form: {}
         }
-
     }
 
 
