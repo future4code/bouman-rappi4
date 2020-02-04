@@ -18,10 +18,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Footer from '../Footer';
-
-import { getProducts } from '../../action/products'
+import { getProducts } from '../../action/products';
 import Header from '../../components/Header';
-
 
 const FeedContainer = styled.main`
     display: flex;
@@ -29,32 +27,31 @@ const FeedContainer = styled.main`
     align-items: center;
 `
 
-const StyledTextField = styled(TextField)`
-    width: 80%;
-    height: 56px;
+const StyledSubHeader= styled.div`
     position: fixed;
-    top: 70px;
-     background-color:white;
+    top: 50px;
+    z-index: 2;
+
+`
+
+const StyledTextField = styled(TextField)`
+    background: white;
+    text-align: center;
+    width: 450px;
+    z-index: 2;
 `
 
 const StyledSearchIcon = styled(SearchOutlinedIcon)`
     opacity: 30%;
 `
 
-const StyledFooter = styled(BottomNavigation)`
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid lightgray;
-`
-
 const StyledAppBar = styled(AppBar)`
-    background: none;
-    position: fixed;
-    top: 130px;
+    background: white;
     box-shadow: none;
     color: black;
-    background-color:white;
+    z-index: 1;
+    padding-top: 120px;
+
 `
 
 const StyledTabText = styled(Tab)`
@@ -67,7 +64,7 @@ const StyledCardContainer = styled.div`
     position:absolute;
     top: 185px;
     height:auto;
-    z-index:-2;
+    z-index: -2;
 `
 
 const StyledCardContent = styled(CardContent)`
@@ -94,63 +91,56 @@ class FeedPage extends React.Component {
 
         }
     }
-    
 
-componentDidMount() {
-    this.props.getProducts()
-}
-   
+    componentDidMount() {
+        this.props.getProducts()
+    }
 
     render() {
         console.log("teste",this.props.getToProducts)
         return (
             <FeedContainer>
-                <Header title="Rappi4"/>
-                <StyledTextField type="search" placeholder="Restaurante" variant="outlined" 
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <StyledSearchIcon />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-                    <StyledAppBar>
-                        <Tabs
-                            variant="scrollable"
-                            scrollButtons="on"
-                        >
-                            <StyledTabText label="Burger"/>
-                            <StyledTabText label="Asiáticas"/>
-                            <StyledTabText label="Massas"/>
-                            <StyledTabText label="Saudáveis"/>
-                            <StyledTabText label="Sobremesa"/>
-                            <StyledTabText label="Salgados"/>
-                        </Tabs>
-                    </StyledAppBar>
+                <Header title="Rappi4" />               
+                <StyledSubHeader>
+                        <StyledTextField type="search" placeholder="Restaurante" variant="outlined"
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <StyledSearchIcon />
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <StyledAppBar>
+                            <Tabs
+                                variant="scrollable"
+                                scrollButtons="on"
+                            >
+                                {this.props.getToProducts.map((product) => (
+                                    <StyledTabText label={product.category} />
+                                ))}
 
-               
-                    <StyledCardContainer>
-                    {this.props.getToRestaurants.map((restaurant) => (
-                        <Card>
-                            <CardActionArea>
-                            
+                            </Tabs>
+                        </StyledAppBar>                   
+                </StyledSubHeader> 
+
+                <StyledCardContainer>
+                    <Card>
+                        <CardActionArea>
+                            {this.props.getToProducts.map((product) => (
                                 <StyledCardContent>
-                                    <StyledCardImage component="img" image={restaurant.logoUrl} title="foto do prato" alt="foto do prato"/>
-                                    <p>{restaurant.name}</p>
+                                    <StyledCardImage component="img" image={product.logoUrl} title="foto do prato" alt="foto do prato" />
+                                    <p>{product.name}</p>
                                     <StyledCardDetails>
-                                        <p>{restaurant.deliveryTime} min</p>
-                                        <p>Frete: R${restaurant.shipping},00</p>
+                                        <p>{product.deliveryTime} min</p>
+                                        <p>Frete: R${product.shipping},00</p>
                                     </StyledCardDetails>
                                 </StyledCardContent>
-                             
-                            </CardActionArea>
-                        </Card>
-                        ))}
-                    </StyledCardContainer>
-               
-                
-                <Footer/>
+                            ))}
+                        </CardActionArea>
+                    </Card>
+                </StyledCardContainer>
+                <Footer />
             </FeedContainer>
         )
     }

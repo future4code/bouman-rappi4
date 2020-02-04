@@ -6,11 +6,15 @@ import TextField from "@material-ui/core/TextField";
 export const StyledHeader = styled.header `
     width: 100%;
     height: 40px;
-    border-bottom: 1px solid #707070;
+    border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
     justify-content: center;
-    position:fixed
+    position: fixed;
+    top: 0;
+    background: white;
+    z-index: 3;
+
 `
 
 // Loader
