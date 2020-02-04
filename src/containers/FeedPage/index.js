@@ -18,6 +18,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Footer from '../Footer';
+import { getProducts } from '../../action/products'
 
 const FeedContainer = styled.main`
     display: flex;
@@ -64,8 +65,9 @@ const StyledTabText = styled(Tab)`
 `
 
 const StyledCardContainer = styled.div`
-    position: fixed;
+    position:absolute;
     top: 185px;
+    height:auto;
 `
 
 const StyledCardContent = styled(CardContent)`
@@ -94,7 +96,9 @@ class FeedPage extends React.Component {
     }
     
 
-
+componentDidMount() {
+    this.props.getProducts()
+}
    
 
     render() {
@@ -127,21 +131,27 @@ class FeedPage extends React.Component {
                         </Tabs>
                     </StyledAppBar>
 
-                <StyledCardContainer>
-                    <Card>
-                        <CardActionArea>
-                            
-                            <StyledCardContent>
-                                <StyledCardImage component="img" image="https://picsum.photos/328/120" title="foto do prato" alt="foto do prato"/>
-                                <p>Nome do produto</p>
-                                <StyledCardDetails>
-                                    <p>40-60 min</p>
-                                    <p>Frete: R$5,00</p>
-                                </StyledCardDetails>
-                            </StyledCardContent>
-                        </CardActionArea>
-                    </Card>
-                </StyledCardContainer>
+               
+                    <StyledCardContainer>
+                        <Card>
+                            <CardActionArea>
+                            {this.props.getToProducts.map((product) => (
+                                <StyledCardContent>
+                                    <StyledCardImage component="img" image={product.logoUrl} title="foto do prato" alt="foto do prato"/>
+                                    <p>{product.name}</p>
+                                    <StyledCardDetails>
+                                        
+
+                                        <p>{product.deliveryTime} min</p>
+                                        <p>Frete: R${product.shipping},00</p>
+                                    </StyledCardDetails>
+                                </StyledCardContent>
+                             ))}
+                            </CardActionArea>
+                        </Card>
+                    </StyledCardContainer>
+               
+                
                 <Footer/>
             </FeedContainer>
         )
@@ -149,11 +159,11 @@ class FeedPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+    getToProducts: state.products.allProducts
 })
 
 const mapDispatchToProps = dispatch => ({
-
+    getProducts: () => dispatch(getProducts()),
 })
 
 export default connect(

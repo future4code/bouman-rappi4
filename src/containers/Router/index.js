@@ -25,7 +25,7 @@ function Router(props) {
         <Route exact path={routes.adressFormPage} component={AdressFormPage} />
         <Route exact path={routes.feedPage} component={FeedPage} />
         <Route exact path={routes.cartPage} component={CartPage} />
-        <Route exact path={routes.profilePage} component={ProfilePage} />
+        {/* <Route exact path={routes.profilePage} component={ProfilePage} /> */}
       </Switch>
     </ConnectedRouter>
   );
