@@ -59,7 +59,6 @@ export class LoginPage extends React.Component {
                         variant="outlined"
                     />
                    
-                    {/* <StyledButtonForms onClick={goToFeedPage}>Entrar</StyledButtonForms> */}
                     <StyledButtonForms type="submit" >Entrar</StyledButtonForms>
                     <span >Não possui Cadastro?<button onClick={goToSignUpPage}>Clique aqui.</button></span>
                 </LoginWrapper>

@@ -6,10 +6,11 @@ import Loader from "../../components/Loader/Loader";
 import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, BackButton, HeaderSignUpPage } from "../../style/styled";
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import BackIcon from "../../imagens/ícones/back.png";
+import { signup } from "../../action/login"
 
 const CadastroForm = [
     {
-        name: 'username',
+        name: 'name',
         type: 'text',
         label: 'Nome ',
         placeholder: 'Nome e Sobrenome',
@@ -24,16 +25,15 @@ const CadastroForm = [
         placeholder: 'email@email.com',
         required: true,
         pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
+    },
+    {
+        name: 'cpf',
+        type: 'number',
+        label: 'CPF',
+        placeholder: '000.000.000-00',
+        required: true,
         variant: "outlined",
-     },
-     {
-         name: 'password',
-         type: 'password',
-         label: 'CPF',
-         placeholder: '000.000.000-00',
-         required: true,
-         variant: "outlined",
-     },
+    },
      {
         name: 'password',
         type: 'password',
@@ -44,7 +44,7 @@ const CadastroForm = [
     },
     {
         name: 'password',
-        type: 'password',
+        type: 'confirmPassword',
         label: 'Confirmar',
         placeholder: 'Confirme a senha anterior',
         required: true,
@@ -70,13 +70,13 @@ export class SignUpPage extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const { username, email, password } = this.state
-        this.props.signup(username, email, password)
+        const { name, email, cpf, password } = this.state
+        this.props.signup(name, email, cpf, password)
     }
 
 
     render() {
-        const { goToLoginPage, goToAdressPage } = this.props
+        const { goToLoginPage } = this.props
 
         return (
             <div>
@@ -86,11 +86,11 @@ export class SignUpPage extends React.Component {
                 <StyledHeaderForms>
                     <StyledImgForms src={LogoLogin} />
                 </StyledHeaderForms>
-                <LoginWrapper onSubmit={this.handleOnSubmit}>
+                <LoginWrapper onSubmit={this.handleSubmit}>
                     <h1>Cadastre-se</h1>
                     {CadastroForm.map(input => (
                         <StyledTextField
-                            onChange={this.handleFieldChange}
+                            onChange={this.handleChange}
                             name={input.name}
                             type={input.type}
                             label={input.label}
@@ -100,7 +100,7 @@ export class SignUpPage extends React.Component {
                             variant={input.variant}
                         />
                     ))}
-                    <StyledButtonForms type="submit" onClick={goToAdressPage} >Criar</StyledButtonForms>
+                    <StyledButtonForms type="submit" >Criar</StyledButtonForms>
                     <BackButton onClick={goToLoginPage} src={BackIcon} />
                 </LoginWrapper>
             </div>
@@ -113,8 +113,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+    signup: (name, email, cpf, password) => dispatch(signup(name, email, cpf, password)),
     goToLoginPage: () => dispatch(push(routes.loginPage)),
     goToAdressPage: () => dispatch(push(routes.adressFormPage))
+
 })
 
 export default connect(
