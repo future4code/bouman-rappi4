@@ -5,7 +5,8 @@ import LoginPage from "../LoginPage";
 import SignUpPage from "../SignUpPage";
 import AdressFormPage from "../AdressFormPage";
 import FeedPage from "../FeedPage";
-import CartPage from "../Cart"
+import CartPage from "../CartPage";
+import ProfilePage from "../ProfilePage";
 
 export const routes = {
   loginPage: "/",
