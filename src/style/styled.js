@@ -14,6 +14,7 @@ export const StyledHeader = styled.header `
     top: 0;
     background: white;
     z-index: 3;
+
 `
 
 // Loader

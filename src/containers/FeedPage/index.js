@@ -31,6 +31,7 @@ const StyledSubHeader= styled.div`
     position: fixed;
     top: 50px;
     z-index: 2;
+
 `
 
 const StyledTextField = styled(TextField)`
@@ -50,6 +51,7 @@ const StyledAppBar = styled(AppBar)`
     color: black;
     z-index: 1;
     padding-top: 120px;
+
 `
 
 const StyledTabText = styled(Tab)`
@@ -95,6 +97,7 @@ class FeedPage extends React.Component {
     }
 
     render() {
+        console.log("teste",this.props.getToProducts)
         return (
             <FeedContainer>
                 <Header title="Rappi4" />               
@@ -137,8 +140,6 @@ class FeedPage extends React.Component {
                         </CardActionArea>
                     </Card>
                 </StyledCardContainer>
-
-
                 <Footer />
             </FeedContainer>
         )
@@ -146,7 +147,7 @@ class FeedPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    getToProducts: state.products.allProducts
+    getToRestaurants: state.products.allRestaurants
 })
 
 const mapDispatchToProps = dispatch => ({
