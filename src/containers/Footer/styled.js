@@ -7,4 +7,5 @@ export const StyledFooter = styled(BottomNavigation)`
     width: 100%;
     height: 49px;
     padding-bottom: 50px;
+    border-top: 1px solid lightgray;
 `
