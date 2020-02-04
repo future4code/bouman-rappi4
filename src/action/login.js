@@ -55,11 +55,11 @@ export const addAdress = (street, number, neighbourhood, city, state, complement
   try{
   const response = await axios.put(`${baseURL}address`, addAdressInformation, headers);
   window.localStorage.setItem("token", response.data.token)
-  dispatch(push(routes.feed))
+  dispatch(push(routes.feedPage))
 
  }catch{
   window.alert("Erro no login")
-  dispatch(push(routes.loginPage))
+  dispatch(push(routes.adressFormPage))
 
 }
 }
