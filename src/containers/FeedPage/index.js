@@ -1,10 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
 import { TextField, InputAdornment, Input } from '@material-ui/core';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import styled from 'styled-components';
@@ -101,7 +96,7 @@ class FeedPage extends React.Component {
                                 variant="scrollable"
                                 scrollButtons="on"
                             >
-                                {this.props.getToProducts.map((product) => (
+                                {this.props.getToProducts && this.props.getToProducts.map((product) => (
                                     <StyledTabText label={product.category} />
                                 ))}
                             </Tabs>
@@ -110,7 +105,7 @@ class FeedPage extends React.Component {
                 <StyledCardContainer>
                     <Card>
                         <CardActionArea>
-                            {this.props.getToProducts.map((product) => (
+                            {this.props.getToProducts && this.props.getToProducts.map((product) => (
                                 <StyledCardContent>
                                     <StyledCardImage component="img" image={product.logoUrl} title="foto do prato" alt="foto do prato" />
                                     <p>{product.name}</p>
@@ -129,15 +124,14 @@ class FeedPage extends React.Component {
     }
 }
 const mapStateToProps = state => ({
-    getToProducts: state.products.allProducts
+    getToProducts: state.products.allRestaurants
 })
 const mapDispatchToProps = dispatch => ({
     getProducts: () => dispatch(getProducts()),
 })
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps)
-    (FeedPage);
+
+export default connect(mapStateToProps,mapDispatchToProps)(FeedPage);
+
 
 
 
