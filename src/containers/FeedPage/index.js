@@ -14,6 +14,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+
+  
+
+  
+
+
 const FeedContainer = styled.main`
     display: flex;
     flex-direction: column;
@@ -49,6 +55,9 @@ class FeedPage extends React.Component {
 
         }
     }
+
+
+   
 
     render() {
         const { goToFeedPage } = this.props;
