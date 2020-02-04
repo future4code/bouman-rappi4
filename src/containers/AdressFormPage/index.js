@@ -3,21 +3,22 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
 import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, BackButton, HeaderSignUpPage } from "../../style/styled";
-import BackIcon from "../../imagens/ícones/back.png";
+import { addAdress } from "../../action/login"
+import BackIcon from "../../imagens/ícones/back.png"
 
 const AdressForm = [
     {
-        name: 'username',
+        name: 'street',
         type: 'text',
-        label: 'Logradouro ',
+        label: 'street ',
         placeholder: 'Rua/AV.',
         required: true,
         pattern: "[A-Za-z]",
         variant: "outlined",
      },
      {
-        name: 'email',
-        type: 'email',
+        name: 'number',
+        type: 'number',
         label: 'Número',
         placeholder: 'Número',
         required: true,
@@ -25,32 +26,32 @@ const AdressForm = [
         variant: "outlined",
      },
      {
-         name: 'password',
-         type: 'password',
+         name: 'complement',
+         type: 'text',
          label: 'Complemento',
          placeholder: 'Apto./Bloco',
          required: true,
          variant: "outlined",
      },
      {
-        name: 'password',
-        type: 'password',
+        name: 'neighbourhood',
+        type: 'text',
         label: 'Bairro',
         placeholder: 'Bairro',
         required: true,
         variant: "outlined",
     },
     {
-        name: 'password',
-        type: 'password',
+        name: 'city',
+        type: 'text',
         label: 'Cidade',
         placeholder: 'Cidade',
         required: true,
         variant: "outlined",
     },
     {
-        name: 'password',
-        type: 'password',
+        name: 'state',
+        type: 'text',
         label: 'Estado',
         placeholder: 'Estado',
         required: true,
@@ -65,7 +66,6 @@ export class AdressFormPage extends React.Component {
         this.state = {
             form: {}
         }
-
     }
 
 
@@ -77,8 +77,9 @@ export class AdressFormPage extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const { username, email, password } = this.state
-        this.props.signup(username, email, password)
+        const { street, number, neighbourhood, city, state, complement } = this.state
+        this.props.addAdress(street, number, neighbourhood, city, state, complement)
+        
     }
 
     render() {
@@ -91,11 +92,11 @@ export class AdressFormPage extends React.Component {
                         <BackButton onClick={goToSignUpPage} src={BackIcon}/>
                     </HeaderSignUpPage>
                 </StyledHeaderForms>
-                <LoginWrapper>
+                <LoginWrapper onSubmit={this.handleSubmit}>
                     <h1>Meu endereço</h1>
                     {AdressForm .map(input =>(
                         <StyledTextField
-                            onChange={this.handleFieldChange}
+                            onChange={this.handleChange}
                             name={input.name}
                             type={input.type}
                             label={input.label}
@@ -105,7 +106,7 @@ export class AdressFormPage extends React.Component {
                             variant={input.variant}
                         />
                     ))}
-                    <StyledButtonForms onClick={goToFeedPage}>Salvar</StyledButtonForms>
+                    <StyledButtonForms type="submit" >Salvar</StyledButtonForms>
                 </LoginWrapper>
             </div>
         )
@@ -117,6 +118,7 @@ const mapStateToProps = state =>({
 })
 
 const mapDispatchToProps = dispatch =>({
+    addAdress: (street, number, neighbourhood, city, state, complement) => dispatch(addAdress(street, number, neighbourhood, city, state, complement)),
     goToLoginPage: () => dispatch(push(routes.loginPage)),
     goToSignUpPage: () => dispatch(push(routes.signUpPage)),
     goToFeedPage: () => dispatch(push(routes.feedPage))

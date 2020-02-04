@@ -31,7 +31,9 @@ export class LoginPage extends React.Component {
       }
 
     render() {
-        const { goToSignUpPage, goToFeedPage } = this.props
+
+        const { goToSignUpPage } = this.props
+        const { goToFeedPage } = this.props
         
         return (
             <div>
@@ -58,8 +60,8 @@ export class LoginPage extends React.Component {
                         required
                         variant="outlined"
                     />
-                   
-                    <StyledButtonForms onClick={goToFeedPage}>Entrar</StyledButtonForms>
+
+                    <StyledButtonForms type="submit" >Entrar</StyledButtonForms>
                     <span >Não possui Cadastro?<button onClick={goToSignUpPage}>Clique aqui.</button></span>
                 </LoginWrapper>
             </div>

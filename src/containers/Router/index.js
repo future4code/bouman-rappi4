@@ -8,6 +8,7 @@ import FeedPage from "../FeedPage";
 import ProfilePage from "../ProfilePage";
 import EditRegisterPage from "../EditRegisterPage";
 import EditDataUserPage from "../EditDataUserPage";
+import CartPage from "../CartPage";
 
 export const routes = {
   loginPage: "/",
@@ -15,8 +16,9 @@ export const routes = {
   adressFormPage: "/signUp/adressForm",
   feedPage: "/feed",
   profilePage: "/profile",
-  editRegisterPage: "/edit-register",
-  editDataUserPage: "/edit-user",
+  editRegisterPage: "/profile/edit-register",
+  editDataUserPage: "/profile/edit-user",
+  cartPage: "/cart",
 };
 
 function Router(props) {
@@ -31,7 +33,7 @@ function Router(props) {
         <Route exact path={routes.profilePage} component={ProfilePage} />
         <Route exact path={routes.editRegisterPage} component={EditRegisterPage} />
         <Route exact path={routes.editDataUserPage} component={EditDataUserPage} />
-
+        <Route exact path={routes.cartPage} component={CartPage} />
       </Switch>
     </ConnectedRouter>
   );
