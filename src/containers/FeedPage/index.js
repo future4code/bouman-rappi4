@@ -17,12 +17,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-
-
-  
-
-  
-
+import Footer from '../Footer';
 
 const FeedContainer = styled.main`
     display: flex;
@@ -147,12 +142,7 @@ class FeedPage extends React.Component {
                         </CardActionArea>
                     </Card>
                 </StyledCardContainer>
-
-                <StyledFooter>
-                    <BottomNavigationAction onClick={goToFeedPage} icon={<HomeOutlinedIcon fontSize="large"/>} />
-                    <BottomNavigationAction icon={<ShoppingCartOutlinedIcon fontSize="large"/>} />
-                    <BottomNavigationAction icon={<PersonOutlineOutlinedIcon fontSize="large"/>} />
-                </StyledFooter>
+                <Footer/>
             </FeedContainer>
         )
     }
@@ -163,7 +153,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    goToFeedPage: () => dispatch(push(routes.feedPage)),
+
 })
 
 export default connect(

@@ -4,13 +4,16 @@ import { Switch, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 import SignUpPage from "../SignUpPage";
 import AdressFormPage from "../AdressFormPage";
-import FeedPage from "../FeedPage"
+import FeedPage from "../FeedPage";
+import CartPage from "../Cart"
 
 export const routes = {
   loginPage: "/",
   signUpPage: "/signUp",
   adressFormPage: "/signUp/adressForm",
-  feedPage: "/feed"
+  feedPage: "/feed",
+  cartPage: "/cart",
+  profilePage: "/profile"
 };
 
 function Router(props) {
@@ -21,6 +24,8 @@ function Router(props) {
         <Route exact path={routes.signUpPage} component={SignUpPage} />
         <Route exact path={routes.adressFormPage} component={AdressFormPage} />
         <Route exact path={routes.feedPage} component={FeedPage} />
+        <Route exact path={routes.cartPage} component={CartPage} />
+        <Route exact path={routes.profilePage} component={ProfilePage} />
       </Switch>
     </ConnectedRouter>
   );
