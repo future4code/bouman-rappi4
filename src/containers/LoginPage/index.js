@@ -32,6 +32,7 @@ export class LoginPage extends React.Component {
 
     render() {
         const { goToSignUpPage } = this.props
+        const { goToFeedPage } = this.props
         
         return (
             <div>
