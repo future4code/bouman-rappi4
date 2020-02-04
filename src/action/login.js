@@ -2,7 +2,7 @@ import axios from 'axios'
 import { push } from "connected-react-router";
 import { routes } from "../containers/Router/index";
 
-const baseURL = ""
+const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/rappi4/"
 
 export const login = (email, password) => async (dispatch) => {
     const loginInformation = {
@@ -22,10 +22,11 @@ export const login = (email, password) => async (dispatch) => {
   }
 }
 
-export const signup = (username, email, password) => async (dispatch) => {
+export const signup = (name, email, cpf, password) => async (dispatch) => {
     const signupInformation = {
-      username,
+      name,
       email,
+      cpf,
       password,
     }
      

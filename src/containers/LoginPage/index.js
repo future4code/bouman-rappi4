@@ -57,7 +57,7 @@ export class LoginPage extends React.Component {
                         required
 
                     />
-                    <StyledButtonForms type="submit" >Entrar</StyledButtonForms>
+                    <StyledButtonForms type="submit">Entrar</StyledButtonForms>
                     <span >Não possui Cadastro?<button onClick={goToSignUpPage}>Clique aqui.</button></span>
                 </LoginWrapper>
             </div>
