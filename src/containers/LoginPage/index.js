@@ -31,6 +31,7 @@ export class LoginPage extends React.Component {
       }
 
     render() {
+
         const { goToSignUpPage } = this.props
         const { goToFeedPage } = this.props
         
@@ -39,7 +40,7 @@ export class LoginPage extends React.Component {
                 <StyledHeaderForms>
                     <StyledImgForms src={LogoLogin}/>
                 </StyledHeaderForms>
-                <LoginWrapper onSubmit={this.handleSubmit}>
+                <LoginWrapper>
                     <h3>Entrar</h3>
                     <StyledTextField
                         color="primary"
@@ -59,7 +60,7 @@ export class LoginPage extends React.Component {
                         required
                         variant="outlined"
                     />
-                   
+
                     <StyledButtonForms type="submit" >Entrar</StyledButtonForms>
                     <span >Não possui Cadastro?<button onClick={goToSignUpPage}>Clique aqui.</button></span>
                 </LoginWrapper>
@@ -75,6 +76,7 @@ const mapStateToProps = state =>({
 const mapDispatchToProps = dispatch =>({
     login: (email, password) => dispatch(login(email, password)),
     goToSignUpPage: () => dispatch(push(routes.signUpPage)),
+    goToFeedPage: () => dispatch(push(routes.feedPage)),
 })
 
 export default connect(

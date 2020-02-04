@@ -1,25 +1,65 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Footer from '../Footer';
-import Header from '../../components/Header';
+import React from'react';
+import styled from 'styled-components';
+import { connect } from "react-redux";
+import { Title, Linha, Paragraph , EditContent, Adress, ParagraphDefaultAdress, ParagraphAdress, HistoricParagraph, HistoricLine, HistoricContainer, ContainerOrderCard, TitleOrder, DateOrderCard, SubtotalOrder, ParagraphOnly, EditData, EditAdress } from '../../style/profilePage';
+import Edited from '../../imagens/ícones/edit.svg'
 
-export class ProfilePage extends Component {
-    render() {
-        return (
-            <div>
-                <Header title="Meu Perfil"/>
-                <Footer/>
-            </div>
-        )
-    }
-}
+export const AppWrapper = styled.div`
+width: 100%;
+heigth: 100%;
+`
 
-const mapStateToProps = (state) => ({
+class ProfilePage extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
     
-})
+      };
+    }
+  
+    render() {
+     
+      return (
+        <AppWrapper>
+            <Title>Meu Perfil</Title>
+            <Linha/>
 
-const mapDispatchToProps = dispatch => ({
+            <EditContent>
+                <Paragraph >Bruna Oliveira</Paragraph>
+                <Paragraph >bruna_o@gmail.com</Paragraph>
+                <Paragraph >(11) 964395291</Paragraph>
+                <EditData src={Edited} />
+            </EditContent>
 
-})
+            <Adress>
+                <ParagraphDefaultAdress> Endereço cadastrado </ParagraphDefaultAdress>
+                <ParagraphAdress>Rua Alessandra Vieira, 42 - Santana</ParagraphAdress>
+                <EditAdress src={Edited} />
+            </Adress>
+            <HistoricContainer>
+                <HistoricParagraph>Histórico de pedidos</HistoricParagraph>
+                <HistoricLine/>
+                {/* <ParagraphOnly>Você não realizou nenhum pedido</ParagraphOnly> */}
+            </HistoricContainer>
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage)
+            <ContainerOrderCard>
+
+                <TitleOrder>Bullguer Vila Madalena</TitleOrder>
+                <DateOrderCard>23 de outubro de 2019</DateOrderCard>
+                <SubtotalOrder>SUBTOTAL R$67,00</SubtotalOrder>
+                
+            </ContainerOrderCard>
+        </AppWrapper>
+      );
+    }
+  }
+  
+  
+  const mapDispatchToProps = dispatch => ({
+
+  })
+  
+  
+  
+  export default connect(null, mapDispatchToProps)(ProfilePage);
+  
