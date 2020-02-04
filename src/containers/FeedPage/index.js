@@ -34,6 +34,7 @@ const StyledTextField = styled(TextField)`
     height: 56px;
     position: fixed;
     top: 70px;
+     background-color:white;
 `
 
 const StyledSearchIcon = styled(SearchOutlinedIcon)`
@@ -53,6 +54,7 @@ const StyledAppBar = styled(AppBar)`
     top: 130px;
     box-shadow: none;
     color: black;
+    background-color:white;
 `
 
 const StyledTabText = styled(Tab)`
@@ -65,6 +67,7 @@ const StyledCardContainer = styled.div`
     position:absolute;
     top: 185px;
     height:auto;
+    z-index:-2;
 `
 
 const StyledCardContent = styled(CardContent)`
@@ -99,6 +102,7 @@ componentDidMount() {
    
 
     render() {
+        console.log("teste",this.props.getToProducts)
         return (
             <FeedContainer>
                 <Header title="Rappi4"/>
@@ -127,22 +131,22 @@ componentDidMount() {
 
                
                     <StyledCardContainer>
+                    {this.props.getToRestaurants.map((restaurant) => (
                         <Card>
                             <CardActionArea>
-                            {this.props.getToProducts.map((product) => (
+                            
                                 <StyledCardContent>
-                                    <StyledCardImage component="img" image={product.logoUrl} title="foto do prato" alt="foto do prato"/>
-                                    <p>{product.name}</p>
+                                    <StyledCardImage component="img" image={restaurant.logoUrl} title="foto do prato" alt="foto do prato"/>
+                                    <p>{restaurant.name}</p>
                                     <StyledCardDetails>
-                                        
-
-                                        <p>{product.deliveryTime} min</p>
-                                        <p>Frete: R${product.shipping},00</p>
+                                        <p>{restaurant.deliveryTime} min</p>
+                                        <p>Frete: R${restaurant.shipping},00</p>
                                     </StyledCardDetails>
                                 </StyledCardContent>
-                             ))}
+                             
                             </CardActionArea>
                         </Card>
+                        ))}
                     </StyledCardContainer>
                
                 
@@ -153,7 +157,7 @@ componentDidMount() {
 }
 
 const mapStateToProps = state => ({
-    getToProducts: state.products.allProducts
+    getToRestaurants: state.products.allRestaurants
 })
 
 const mapDispatchToProps = dispatch => ({

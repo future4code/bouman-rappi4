@@ -2,10 +2,10 @@ import axios from 'axios';
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/rappi4";
 
-export const setProducts = (allProducts) => ({
+export const setProducts = (allRestaurants) => ({
     type: "SET_PRODUCTS",
     payload: {
-        allProducts
+        allRestaurants
     }
 })
 
@@ -25,4 +25,28 @@ export const getProducts = () => async (dispatch) => {
         window.alert("erro ao mostar os produtos");
 
     }
+}
+
+export const setRestaurantsDetails = (restaurant) => ({
+    type: "SET_RESTAURANTS_DETAILS",
+    payload: {
+        restaurant,
+    }
+})
+
+export const getRestaurantsDetails = (restaurantId) => async (dispatch) => {
+    const token = window.localStorage.getItem("token")
+    const axiosHeader = {
+        headers: {
+            auth: token,
+        }
+    }
+
+    try{    
+        const response = await axios.get(`${baseURL}/restaurants/${restaurantId}`, axiosHeader)
+        dispatch(setRestaurantsDetails(response.data.restaurant.products))
+    }catch{
+        window.alert("falha ao carregar detalhes")
+    }
+
 }
