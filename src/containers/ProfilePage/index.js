@@ -2,11 +2,10 @@ import React from'react';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import { Title, Linha, Paragraph , EditContent, Adress, ParagraphDefaultAdress, ParagraphAdress, HistoricParagraph, HistoricLine, HistoricContainer, ContainerOrderCard, TitleOrder, DateOrderCard, SubtotalOrder, ParagraphOnly, EditData, EditAdress } from '../../style/profilePage';
-import Edited from '../../imagens/ícones/edit.svg'
+import Edited from '../../imagens/ícones/edit.svg'
 
 export const AppWrapper = styled.div`
 width: 100%;
-heigth: 100%;
 `
 
 class ProfilePage extends React.Component {

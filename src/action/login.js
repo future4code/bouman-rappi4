@@ -33,7 +33,7 @@ export const signup = (name, email, cpf, password) => async (dispatch) => {
     try{
     const response = await axios.post(`${baseURL}signup`, signupInformation);
     window.localStorage.setItem("token", response.data.token)
-    dispatch(push(routes.feed))
+    dispatch(push(routes.feedPage))
 
    }catch{
     window.alert("Erro na criação")
