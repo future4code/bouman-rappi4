@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 import SignUpPage from "../SignUpPage";
 import AdressFormPage from "../AdressFormPage";
-import FeedPage from "../FeedPage";
+import FeedPage from "../FeedPage/index";
 import ProfilePage from "../ProfilePage";
 import EditRegisterPage from "../EditRegisterPage";
 import EditDataUserPage from "../EditDataUserPage";

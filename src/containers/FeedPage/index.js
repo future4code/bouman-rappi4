@@ -15,6 +15,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Footer from '../Footer';
 import { getProducts } from '../../action/products';
 import Header from '../../components/Header';
+
+
 const FeedContainer = styled.main`
     display: flex;
     flex-direction: column;
@@ -127,7 +129,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getProducts: () => dispatch(getProducts()),
 })
+
 export default connect(mapStateToProps,mapDispatchToProps)(FeedPage);
+
 
 
 
