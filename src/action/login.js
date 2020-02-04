@@ -41,3 +41,26 @@ export const signup = (name, email, cpf, password) => async (dispatch) => {
 
   }
 }
+export const addAdress = (street, number, neighbourhood, city, state, complement) => async (dispatch) => {
+  const addAdressInformation = {
+    street,
+    number,
+    neighbourhood,
+    city,
+    state,
+    complement
+  }
+  const headers = { headers: { auth: window.localStorage.getItem("token") } }
+  
+  try{
+  const response = await axios.put(`${baseURL}address`, addAdressInformation, headers);
+  window.localStorage.setItem("token", response.data.token)
+  dispatch(push(routes.feed))
+
+ }catch{
+  window.alert("Erro no login")
+  dispatch(push(routes.loginPage))
+
+}
+}
+
