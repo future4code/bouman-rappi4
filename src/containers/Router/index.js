@@ -19,21 +19,21 @@ export const routes = {
   editRegisterPage: "/profile/edit-register",
   editDataUserPage: "/profile/edit-user",
   cartPage: "/cart",
-};
+}; 
 
 function Router(props) {
   return (
     <ConnectedRouter history={props.history}>
       <Switch>
-        <Route path={routes.root} component={LoginPage} />
         <Route exact path={routes.loginPage} component={LoginPage} />
         <Route exact path={routes.signUpPage} component={SignUpPage} />
         <Route exact path={routes.adressFormPage} component={AdressFormPage} />
-        <Route exact path={routes.feedPage} component={FeedPage} />
         <Route exact path={routes.profilePage} component={ProfilePage} />
         <Route exact path={routes.editRegisterPage} component={EditRegisterPage} />
         <Route exact path={routes.editDataUserPage} component={EditDataUserPage} />
         <Route exact path={routes.cartPage} component={CartPage} />
+        <Route exact path={routes.feedPage} component={FeedPage} />
+
       </Switch>
     </ConnectedRouter>
   );

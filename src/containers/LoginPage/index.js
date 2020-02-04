@@ -33,14 +33,13 @@ export class LoginPage extends React.Component {
     render() {
 
         const { goToSignUpPage } = this.props
-        const { goToFeedPage } = this.props
         
         return (
             <div>
                 <StyledHeaderForms>
                     <StyledImgForms src={LogoLogin}/>
                 </StyledHeaderForms>
-                <LoginWrapper>
+                <LoginWrapper onSubmit={this.handleSubmit}>
                     <h3>Entrar</h3>
                     <StyledTextField
                         color="primary"
