@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-import Loader from "../../components/Loader/Loader";
+// import Loader from "../../components/Loader/Loader";
 import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms } from "../../style/styled";
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import { login } from "../../action/login"
@@ -60,7 +60,7 @@ export class LoginPage extends React.Component {
                         variant="outlined"
                     />
 
-                    <StyledButtonForms type="submit" onClick={goToFeedPage} >Entrar</StyledButtonForms>
+                    <StyledButtonForms type="submit">Entrar</StyledButtonForms>
                     <span >Não possui Cadastro?<button onClick={goToSignUpPage}>Clique aqui.</button></span>
                 </LoginWrapper>
             </div>
@@ -68,17 +68,12 @@ export class LoginPage extends React.Component {
     }
 } 
 
-const mapStateToProps = state =>({
-
-})
-
 const mapDispatchToProps = dispatch =>({
     login: (email, password) => dispatch(login(email, password)),
     goToSignUpPage: () => dispatch(push(routes.signUpPage)),
-    goToFeedPage: () => dispatch(push(routes.feedPage)),
 })
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 ) (LoginPage);

@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
-import products from "./products";
+import restaurantsReducer from "./restaurantsReducer";
 
 export const generateReducers = history =>
   combineReducers({
     router: connectRouter(history),
-    products,
+    restaurantsReducer,
     // Outros reducers aqui
   });

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { connect } from "react-redux";
 import { Title, Linha, Paragraph , EditContent, Adress, ParagraphDefaultAdress, ParagraphAdress, HistoricParagraph, HistoricLine, HistoricContainer, ContainerOrderCard, TitleOrder, DateOrderCard, SubtotalOrder, ParagraphOnly, EditData, EditAdress } from '../../style/profilePage';
 import Edited from "../../imagens/ícones/edit.svg"
-import { Footer } from '../Footer';
+import Footer from '../Footer';
+import Header from '../../components/Header';
 
 export const AppWrapper = styled.div`
 width: 100%;
@@ -22,9 +23,7 @@ class ProfilePage extends React.Component {
      
       return (
         <AppWrapper>
-            <Title>Meu Perfil</Title>
-            <Linha/>
-
+            <Header title="Meu Perfil"/>
             <EditContent>
                 <Paragraph >Bruna Oliveira</Paragraph>
                 <Paragraph >bruna_o@gmail.com</Paragraph>
