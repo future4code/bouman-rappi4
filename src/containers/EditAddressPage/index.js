@@ -7,7 +7,6 @@ import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, Style
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import BackIcon from "../../imagens/ícones/back.png";
 import Header from '../../components/Header';
-
 const EditAdressForm = [
     {
         name: 'username',
@@ -39,7 +38,8 @@ const EditAdressForm = [
     },
 ]
 
-export class EditRegisterPage extends React.Component {
+export class EditAddressPage extends React.Component {
+
     constructor(props) {
         super(props);
 
