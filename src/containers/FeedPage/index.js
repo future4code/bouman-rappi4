@@ -103,20 +103,20 @@ class FeedPage extends React.Component {
                         </StyledAppBar>                   
                 </StyledSubHeader> 
                 <StyledCardContainer>
-                    <Card>
-                        <CardActionArea>
-                            {this.props.getToProducts && this.props.getToProducts.map((product) => (
-                                <StyledCardContent>
-                                    <StyledCardImage component="img" image={product.logoUrl} title="foto do prato" alt="foto do prato" />
-                                    <p>{product.name}</p>
-                                    <StyledCardDetails>
-                                        <p>{product.deliveryTime} min</p>
-                                        <p>Frete: R${product.shipping},00</p>
-                                    </StyledCardDetails>
-                                </StyledCardContent>
-                            ))}
-                        </CardActionArea>
-                    </Card>
+                    {this.props.getToProducts && this.props.getToProducts.map((product) => (
+                        <Card onClick={this.props.goToDetailsRestaurant}>
+                            <CardActionArea>
+                                    <StyledCardContent>
+                                        <StyledCardImage component="img" image={product.logoUrl} title="foto do prato" alt="foto do prato" />
+                                        <p>{product.name}</p>
+                                        <StyledCardDetails>
+                                            <p>{product.deliveryTime} min</p>
+                                            <p>Frete: R${product.shipping},00</p>
+                                        </StyledCardDetails>
+                                    </StyledCardContent>                          
+                            </CardActionArea>
+                        </Card>
+                    ))}
                 </StyledCardContainer>
                 <Footer />
             </FeedContainer>
@@ -128,6 +128,7 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
     getProducts: () => dispatch(getProducts()),
+    goToDetailsRestaurant: () => dispatch(push(routes.detailsPage)),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(FeedPage);

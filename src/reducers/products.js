@@ -1,6 +1,7 @@
 const initialState = {
     allRestaurants: [],
     restaurantsDetails: {},
+    restaurantIdSelected:"",
 }
 
 const productsReducer = (state = initialState, action) =>{
@@ -12,6 +13,10 @@ const productsReducer = (state = initialState, action) =>{
         case "SET_RESTAURANTS_DETAILS":
             const restaurant = action.payload.restaurant
             return { ...state, restaurantsDetails: restaurant}
+
+        case "SET_RESTAURANT_ID":
+            const restaurantId = action.payload.restaurantIdSelected
+            return { ...state, restaurantIdSelected: restaurantId}
 
         default:
             return state;

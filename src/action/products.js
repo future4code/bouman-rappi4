@@ -44,9 +44,15 @@ export const getRestaurantsDetails = (restaurantId) => async (dispatch) => {
 
     try{    
         const response = await axios.get(`${baseURL}/restaurants/${restaurantId}`, axiosHeader)
-        dispatch(setRestaurantsDetails(response.data.restaurant.products))
+        dispatch(setRestaurantsDetails(response.data.restaurant))
     }catch{
         window.alert("falha ao carregar detalhes")
     }
-
 }
+
+export const setRestaurantIdSelected = (restaurantIdSelected) => ({
+    type: 'SET_RESTAURANT_ID',
+    payload: {
+        restaurantIdSelected,
+    }
+})
