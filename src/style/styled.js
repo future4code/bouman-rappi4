@@ -4,7 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import Tab from '@material-ui/core/Tab';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import AppBar from '@material-ui/core/AppBar';
@@ -15,21 +14,6 @@ export const StyledCard = styled(Card) `
     padding: 0;
     width: 90%;
     min-height: 300px;
-`
-
-// header
-export const StyledHeader = styled.header `
-    width: 100%;
-    height: 40px;
-    border-bottom: 1px solid lightgray;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    background: white;
-    z-index: 3;
-
 `
 
 // Loader
@@ -46,11 +30,33 @@ export const LoaderContainer = styled.div `
 export const StyledImg = styled.img `
     width: auto;
     height: auto;
-    color: white;
 `
 
 // containers
 
+export const StyledMainProducts = styled.main `
+    width: 100%;
+    min-height: 1900px;
+    display: flex;
+    position: relative;
+    top: 50px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff;
+`
+
+export const StyledMain = styled.main `
+    width: 100%;
+    min-height: 2500px;
+    display: flex;
+    position: relative;
+    top: 180px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff;
+`
 export const StyledHeaderForms = styled.header `
     width: 100%;
     min-height: 150px;
@@ -69,14 +75,24 @@ export const LoginWrapper = styled.form`
   place-content: center;
   justify-items: center;
   display: grid;
+  background-color: #ffffff;
 `;
+
+export const SignUpButton = styled.button `
+    width: auto;
+    height: auto;
+    border: none;
+    outline: none;
+    background-color: #ffffff;
+    font-size: 15px;
+`
 
 export const StyledButtonForms = styled(Button) `
     cursor: pointer;
     width: 90%;
     background-color: #E86E5A; 
     :hover {
-        border: 1px solid white;
+        border: 1px solid #ffffff;
         background-color: #E86E5A;
     }
 `
@@ -84,7 +100,7 @@ export const StyledButtonForms = styled(Button) `
 export const StyledImgForms = styled.img `
     width: auto;
     height: auto;
-    color: white;
+    color: #ffffff;
 `
 
 export const HeaderSignUpPage = styled.div `
@@ -105,23 +121,31 @@ export const FeedContainer = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #ffffff;
 `
 export const StyledSubHeader= styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 50px;
     z-index: 2;
+    background-color: #ffffff;
 `
 export const StyledTextField = styled(TextField)`
-    background: white;
+    background-color: #ffffff;
     text-align: center;
-    width: 450px;
+    width: 90%;
     z-index: 2;
+    border-radius: 2px;
 `
 export const StyledSearchIcon = styled(SearchOutlinedIcon)`
     opacity: 30%;
 `
 export const StyledAppBar = styled(AppBar)`
-    background: white;
+    background-color: #ffffff;
     box-shadow: none;
     color: black;
     z-index: 1;
@@ -130,12 +154,16 @@ export const StyledAppBar = styled(AppBar)`
 export const StyledTabText = styled(Tab)`
     color: black;
     font-weight: bold;
-    font-size: 8pt;
+    font-size: 9pt;
 `
 export const StyledCardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position:absolute;
+    background-color: #ffffff;;
     top: 185px;
-    height:auto;
     z-index: -2;
 `
 export const StyledCardContent = styled(CardContent)`
