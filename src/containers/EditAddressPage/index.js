@@ -38,7 +38,7 @@ const EditForm = [
     },
 ]
 
-export class EditRegisterPage extends React.Component {
+export class EditAddressPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -98,4 +98,4 @@ const mapDispatchToProps = dispatch => ({
     goToAdressPage: () => dispatch(push(routes.adressFormPage))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditRegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditAddressPage);

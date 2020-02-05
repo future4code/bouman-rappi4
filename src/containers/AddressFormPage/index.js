@@ -59,7 +59,7 @@ const AdressForm = [
     },
 ]
 
-export class AdressFormPage extends React.Component {
+export class AddressFormPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -127,4 +127,4 @@ const mapDispatchToProps = dispatch =>({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-) (AdressFormPage);
+) (AddressFormPage);

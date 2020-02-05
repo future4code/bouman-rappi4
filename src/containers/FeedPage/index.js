@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Footer from '../Footer';
-import { getRestaurants, setRestaurantIdAction } from '../../action/products';
+import { getRestaurants, setRestaurantIdAction } from '../../action/restaurants';
 import Header from '../../components/Header';
 import { FeedContainer, StyledCard, StyledSubHeader, StyledTextField, StyledSearchIcon, StyledAppBar, StyledTabText, StyledCardContainer, StyledCardContent, StyledCardImage, StyledCardDetails } from '../../style/styled'
 import { routes } from '../Router';
