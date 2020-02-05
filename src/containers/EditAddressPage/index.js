@@ -97,4 +97,4 @@ const mapDispatchToProps = dispatch => ({
     goToAdressPage: () => dispatch(push(routes.adressFormPage))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditRegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditAddressPage);
