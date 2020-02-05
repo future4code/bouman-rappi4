@@ -9,6 +9,7 @@ import ProfilePage from "../ProfilePage";
 import EditRegisterPage from "../EditRegisterPage";
 import EditDataUserPage from "../EditDataUserPage";
 import CartPage from "../CartPage";
+import RestaurantDetails from "../RestaurantDetails";
 
 export const routes = {
   loginPage: "/",
@@ -19,6 +20,7 @@ export const routes = {
   editRegisterPage: "/profile/edit-register",
   editDataUserPage: "/profile/edit-user",
   cartPage: "/cart",
+  restaurantDetails: "/restaurantDetails"
 }; 
 
 function Router(props) {
@@ -33,6 +35,7 @@ function Router(props) {
         <Route exact path={routes.editDataUserPage} component={EditDataUserPage} />
         <Route exact path={routes.cartPage} component={CartPage} />
         <Route exact path={routes.feedPage} component={FeedPage} />
+        <Route exact path={routes.restaurantDetails} component={RestaurantDetails} />
 
       </Switch>
     </ConnectedRouter>

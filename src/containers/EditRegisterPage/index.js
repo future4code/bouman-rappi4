@@ -33,7 +33,7 @@ const EditForm = [
         label: 'CPF',
         placeholder: 'Digite cpf com dígito',
         required: true,
-        pattern: "\d{3}\.\d{3}\.\d{3}-\d{2}",
+        pattern: "d{3}.d{3}.d{3}-d{2}",
         variant: "outlined",
     },
 ]

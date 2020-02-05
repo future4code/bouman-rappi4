@@ -2,14 +2,14 @@ import axios from 'axios';
 
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/rappi4";
 
-export const setProducts = (allRestaurants) => ({
-    type: "SET_PRODUCTS",
+export const setRestaurants = (restaurants) => ({
+    type: "SET_RESTAURANTS",
     payload: {
-        allRestaurants
+        restaurants,
     }
 })
 
-export const getProducts = () => async (dispatch) => {
+export const getRestaurants = () => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const axiosHeader = {
         headers: {
@@ -19,7 +19,7 @@ export const getProducts = () => async (dispatch) => {
 
     try {
         const response = await axios.get(`${baseURL}/restaurants`, axiosHeader);
-        dispatch(setProducts(response.data.restaurants));
+        dispatch(setRestaurants(response.data.restaurants));
 
     }catch{
         window.alert("erro ao mostar os produtos");
@@ -27,10 +27,17 @@ export const getProducts = () => async (dispatch) => {
     }
 }
 
-export const setRestaurantsDetails = (restaurant) => ({
-    type: "SET_RESTAURANTS_DETAILS",
+export const setRestaurantIdAction = (restaurantId) => ({
+    type: "SET_RESTAURANT_ID_ACTION",
     payload: {
-        restaurant,
+        restaurantId,
+    }
+})
+
+export const setRestaurantDetailsAction = (restaurantDetail) => ({
+    type: "SET_RESTAURANT_DETAILS",
+    payload: {
+        restaurantDetail,
     }
 })
 
@@ -44,7 +51,7 @@ export const getRestaurantsDetails = (restaurantId) => async (dispatch) => {
 
     try{    
         const response = await axios.get(`${baseURL}/restaurants/${restaurantId}`, axiosHeader)
-        dispatch(setRestaurantsDetails(response.data.restaurant.products))
+        dispatch(setRestaurantDetailsAction(response.data.restaurant))
     }catch{
         window.alert("falha ao carregar detalhes")
     }

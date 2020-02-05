@@ -38,7 +38,7 @@ export class CartPage extends Component {
                     <StyledH4>Forma de Pagamento</StyledH4>
                 </SubTitle>
                 <CustomizedRadios/>
-                <StyledButtonConfirm>Confirmar</StyledButtonConfirm>
+                <StyledButtonConfirm onClick={goToFeedPage}>Confirmar</StyledButtonConfirm>
                 <Footer/>
             </CardContainer>
         )

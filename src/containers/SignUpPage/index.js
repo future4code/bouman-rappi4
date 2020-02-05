@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-import Loader from "../../components/Loader/Loader";
 import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, BackButton, HeaderSignUpPage } from "../../style/styled";
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import BackIcon from "../../imagens/ícones/back.png";

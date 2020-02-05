@@ -1,83 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TextField, InputAdornment, Input } from '@material-ui/core';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import styled from 'styled-components';
-import { push } from 'connected-react-router';
-import { routes } from '../Router';
-import AppBar from '@material-ui/core/AppBar';
+import { InputAdornment } from '@material-ui/core';
+import { push } from 'connected-react-router'
 import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Footer from '../Footer';
-import { getProducts } from '../../action/products';
+import { getRestaurants, setRestaurantIdAction } from '../../action/products';
 import Header from '../../components/Header';
+import { FeedContainer, StyledCard, StyledSubHeader, StyledTextField, StyledSearchIcon, StyledAppBar, StyledTabText, StyledCardContainer, StyledCardContent, StyledCardImage, StyledCardDetails } from '../../style/styled'
+import { routes } from '../Router';
 
-
-const FeedContainer = styled.main`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
-const StyledSubHeader= styled.div`
-    position: fixed;
-    top: 50px;
-    z-index: 2;
-`
-const StyledTextField = styled(TextField)`
-    background: white;
-    text-align: center;
-    width: 450px;
-    z-index: 2;
-`
-const StyledSearchIcon = styled(SearchOutlinedIcon)`
-    opacity: 30%;
-`
-const StyledAppBar = styled(AppBar)`
-    background: white;
-    box-shadow: none;
-    color: black;
-    z-index: 1;
-    padding-top: 120px;
-`
-const StyledTabText = styled(Tab)`
-    color: black;
-    font-weight: bold;
-    font-size: 8pt;
-`
-const StyledCardContainer = styled.div`
-    position:absolute;
-    top: 185px;
-    height:auto;
-    z-index: -2;
-`
-const StyledCardContent = styled(CardContent)`
-    width: 400px;
-    height: auto;
-    border-radius: 8px;
-    border: solid 1px #b8b8b8;   
-`
-const StyledCardImage = styled(CardMedia)`
-    max-width: 100%;
-    max-height: auto;
-    object-fit: contain;
-`
-const StyledCardDetails = styled.p`
-    justify-content: space-between;
-`
 class FeedPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
         }
     }
+
     componentDidMount() {
-        this.props.getProducts()
+        const token = window.localStorage.getItem("token")
+        if(token === null){
+          this.props.goToLoginPage()
+        } else {
+            this.props.getRestaurants()
+        };
+    }
+
+    handleSetRestaurantId = (restaurantId) => {
+        this.props.setRestaurantsDetail(restaurantId)
+        this.props.goToRestaurantDetails()
+        console.log(restaurantId)
     }
     render() {
+
+        const { fetchRestaurants } = this.props
+
+        console.log(fetchRestaurants)
         return (
             <FeedContainer>
                 <Header title="Rappi4" />               
@@ -96,27 +55,25 @@ class FeedPage extends React.Component {
                                 variant="scrollable"
                                 scrollButtons="on"
                             >
-                                {this.props.getToProducts && this.props.getToProducts.map((product) => (
-                                    <StyledTabText label={product.category} />
+                                {fetchRestaurants && fetchRestaurants.map((restaurant) => (
+                                    <StyledTabText label={restaurant.category} />
                                 ))}
                             </Tabs>
                         </StyledAppBar>                   
                 </StyledSubHeader> 
                 <StyledCardContainer>
-                    <Card>
-                        <CardActionArea>
-                            {this.props.getToProducts && this.props.getToProducts.map((product) => (
-                                <StyledCardContent>
-                                    <StyledCardImage component="img" image={product.logoUrl} title="foto do prato" alt="foto do prato" />
-                                    <p>{product.name}</p>
-                                    <StyledCardDetails>
-                                        <p>{product.deliveryTime} min</p>
-                                        <p>Frete: R${product.shipping},00</p>
-                                    </StyledCardDetails>
-                                </StyledCardContent>
+                            {fetchRestaurants && fetchRestaurants.map((restaurant) => (
+                                <StyledCard>
+                                    <StyledCardContent key={restaurant.id}>
+                                        <StyledCardImage onClick={() => this.handleSetRestaurantId(restaurant.id)} component="img" image={restaurant.logoUrl} title="foto do prato" alt="foto do prato" />
+                                        <p>{restaurant.name}</p>
+                                        <StyledCardDetails>
+                                            <p>{restaurant.deliveryTime} min</p>
+                                            <p>Frete: R${restaurant.shipping},00</p>
+                                        </StyledCardDetails>
+                                    </StyledCardContent>
+                                </StyledCard>        
                             ))}
-                        </CardActionArea>
-                    </Card>
                 </StyledCardContainer>
                 <Footer />
             </FeedContainer>
@@ -124,10 +81,13 @@ class FeedPage extends React.Component {
     }
 }
 const mapStateToProps = state => ({
-    getToProducts: state.products.allRestaurants
+    fetchRestaurants: state.restaurantsReducer.allRestaurants
 })
 const mapDispatchToProps = dispatch => ({
-    getProducts: () => dispatch(getProducts()),
+    getRestaurants: () => dispatch(getRestaurants()),
+    goToLoginPage: () => dispatch(push(routes.loginPage)),
+    goToRestaurantDetails: () => dispatch(push(routes.restaurantDetails)),
+    setRestaurantsDetail: (restaurantId) => dispatch(setRestaurantIdAction(restaurantId))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(FeedPage);
