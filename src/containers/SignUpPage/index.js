@@ -114,7 +114,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     signup: (name, email, cpf, password) => dispatch(signup(name, email, cpf, password)),
     goToLoginPage: () => dispatch(push(routes.loginPage)),
-    goToAdressPage: () => dispatch(push(routes.adressFormPage))
+    goToAddressPage: () => dispatch(push(routes.addressFormPage))
 
 })
 
