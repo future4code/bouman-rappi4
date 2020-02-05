@@ -7,6 +7,7 @@ import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, Style
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import BackIcon from "../../imagens/ícones/back.png";
 import Header from '../../components/Header';
+
 const EditAdressForm = [
     {
         name: 'username',
@@ -97,4 +98,4 @@ const mapDispatchToProps = dispatch => ({
     goToAdressPage: () => dispatch(push(routes.adressFormPage))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditRegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditAddressPage);

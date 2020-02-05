@@ -30,18 +30,20 @@ class FeedPage extends React.Component {
     handleSetRestaurantId = (restaurantId) => {
         this.props.setRestaurantsDetail(restaurantId)
         this.props.goToRestaurantDetails()
-        console.log(restaurantId)
     }
-    render() {
 
+    handleSearchInput = () => {
+        this.props.goToSearchPage()
+    }
+
+    render() {
         const { fetchRestaurants } = this.props
 
-        console.log(fetchRestaurants)
         return (
             <FeedContainer>
                 <Header title="Rappi4" />               
                 <StyledSubHeader>
-                        <StyledTextField type="search" placeholder="Restaurante" variant="outlined"
+                        <StyledTextField onClick={this.handleSearchInput} type="search" placeholder="Restaurante" variant="outlined"
                             InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
@@ -65,7 +67,13 @@ class FeedPage extends React.Component {
                             {fetchRestaurants && fetchRestaurants.map((restaurant) => (
                                 <StyledCard>
                                     <StyledCardContent key={restaurant.id}>
-                                        <StyledCardImage onClick={() => this.handleSetRestaurantId(restaurant.id)} component="img" image={restaurant.logoUrl} title="foto do prato" alt="foto do prato" />
+                                        <StyledCardImage 
+                                            onClick={() => this.handleSetRestaurantId(restaurant.id)} 
+                                            component="img" 
+                                            image={restaurant.logoUrl} 
+                                            title="foto do prato" 
+                                            alt="foto do prato" 
+                                        />
                                         <p>{restaurant.name}</p>
                                         <StyledCardDetails>
                                             <p>{restaurant.deliveryTime} min</p>
@@ -80,14 +88,17 @@ class FeedPage extends React.Component {
         )
     }
 }
+
 const mapStateToProps = state => ({
     fetchRestaurants: state.restaurantsReducer.allRestaurants
 })
+
 const mapDispatchToProps = dispatch => ({
     getRestaurants: () => dispatch(getRestaurants()),
     goToLoginPage: () => dispatch(push(routes.loginPage)),
     goToRestaurantDetails: () => dispatch(push(routes.restaurantDetails)),
-    setRestaurantsDetail: (restaurantId) => dispatch(setRestaurantIdAction(restaurantId))
+    setRestaurantsDetail: (restaurantId) => dispatch(setRestaurantIdAction(restaurantId)),
+    goToSearchPage: () => dispatch(push(routes.searchPage)),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(FeedPage);

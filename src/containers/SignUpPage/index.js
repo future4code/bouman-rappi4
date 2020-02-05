@@ -24,6 +24,7 @@ const CadastroForm = [
         placeholder: 'email@email.com',
         required: true,
         pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
+        variant: "outlined",
     },
     {
         name: 'cpf',

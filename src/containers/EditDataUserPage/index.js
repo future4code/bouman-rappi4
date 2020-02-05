@@ -37,7 +37,7 @@ const EditUserForm = [
     },
 ]
 
-export class EditUserPage extends React.Component {
+export class EditDataUserPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -98,4 +98,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(EditUserPage);
+)(EditDataUserPage);
