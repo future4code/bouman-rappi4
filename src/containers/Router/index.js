@@ -22,8 +22,7 @@ export const routes = {
   editDataUserPage: "/profile/edit-user",
   cartPage: "/cart",
   restaurantDetails: "/restaurantDetails",
-  /*Apagar essa linha de baixo*/
-  test: "/teste",
+
 }; 
 
 function Router(props) {
@@ -39,10 +38,6 @@ function Router(props) {
         <Route exact path={routes.cartPage} component={CartPage} />
         <Route exact path={routes.feedPage} component={FeedPage} />
         <Route exact path={routes.restaurantDetails} component={RestaurantDetails} />
-        {/* apagar essa linha de baixo */}
-
-        <Route exact path={routes.test} component={Test} />
-
       </Switch>
     </ConnectedRouter>
   );
