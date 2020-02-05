@@ -5,6 +5,8 @@ import { Title, Linha, Paragraph , EditContent, Adress, ParagraphDefaultAdress, 
 import Edited from "../../imagens/ícones/edit.svg"
 import Footer from '../Footer';
 import Header from '../../components/Header';
+import { routes } from '../Router';
+import { push } from 'connected-react-router'
 
 export const AppWrapper = styled.div`
 width: 100%;
@@ -20,7 +22,7 @@ class ProfilePage extends React.Component {
     }
   
     render() {
-     
+      const { goToEditAddressPage, goToEditUserPage } = this.props
       return (
         <AppWrapper>
             <Header title="Meu Perfil"/>
@@ -28,13 +30,13 @@ class ProfilePage extends React.Component {
                 <Paragraph >Bruna Oliveira</Paragraph>
                 <Paragraph >bruna_o@gmail.com</Paragraph>
                 <Paragraph >(11) 964395291</Paragraph>
-                <EditData src={Edited} />
+                <EditData src={Edited} onClick={goToEditUserPage}/>
             </EditContent>
 
             <Adress>
                 <ParagraphDefaultAdress> Endereço cadastrado </ParagraphDefaultAdress>
                 <ParagraphAdress>Rua Alessandra Vieira, 42 - Santana</ParagraphAdress>
-                <EditAdress src={Edited} />
+                <EditAdress src={Edited} onClick={goToEditAddressPage}/>
             </Adress>
             <HistoricContainer>
                 <HistoricParagraph>Histórico de pedidos</HistoricParagraph>
@@ -57,7 +59,8 @@ class ProfilePage extends React.Component {
   
   
   const mapDispatchToProps = dispatch => ({
-
+    goToEditUserPage: () => dispatch(push(routes.editUserPage)),
+    goToEditAddressPage: () => dispatch(push(routes.editAddressPage)),
   })
   
   

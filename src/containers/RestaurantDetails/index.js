@@ -51,7 +51,7 @@ export class RestaurantDetails extends Component {
                 <Card>
                     <CardActionArea>
                         <StyledCardContent key={selectedRestaurant.id}>
-                            <StyledCardImage onClick={() => this.handleSetRestaurantId(selectedRestaurant.id)} component="img" image={selectedRestaurant.logoUrl} title="foto do prato" alt="foto do prato" />
+                            <StyledCardImage component="img" image={selectedRestaurant.logoUrl} title="foto do prato" alt="foto do prato" />
                             <p>{selectedRestaurant.name}</p>
                             <StyledCardDetails>
                                 <p>{selectedRestaurant.deliveryTime} min</p>
