@@ -43,7 +43,7 @@ export const signup = (name, email, cpf, password) => async (dispatch) => {
 
   }
 }
-export const addAdress = (street, number, neighbourhood, city, state, complement) => async (dispatch) => {
+export const addAddress = (street, number, neighbourhood, city, state, complement) => async (dispatch) => {
   const addAdressInformation = {
     street,
     number,

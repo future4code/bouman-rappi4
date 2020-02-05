@@ -6,8 +6,9 @@ import Loader from "../../components/Loader/Loader";
 import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, BackButton, HeaderSignUpPage } from "../../style/styled";
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import BackIcon from "../../imagens/ícones/back.png";
+import Header from '../../components/Header';
 
-const EditForm = [
+const EditAdressForm = [
     {
         name: 'username',
         type: 'text',
@@ -62,15 +63,13 @@ export class EditRegisterPage extends React.Component {
 
 
     render() {
-        const { goToLoginPage, goToAdressPage } = this.props
+        const { goToProfilePage, goToAdressPage } = this.props
 
         return (
             <div>
-                <HeaderSignUpPage>
-                    <BackButton onClick={goToLoginPage} src={BackIcon} />
-                </HeaderSignUpPage>
+                <Header title="Editar Endereço" img={BackIcon} onClick={goToProfilePage}/>
                 <LoginWrapper onSubmit={this.handleOnSubmit}>
-                    {EditForm.map(input => (
+                    {EditAdressForm.map(input => (
                         <StyledTextField
                             onChange={this.handleFieldChange}
                             name={input.name}
@@ -94,7 +93,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    goToLoginPage: () => dispatch(push(routes.loginPage)),
+    goToProfilePage: () => dispatch(push(routes.profilePage)),
     goToAdressPage: () => dispatch(push(routes.adressFormPage))
 })
 

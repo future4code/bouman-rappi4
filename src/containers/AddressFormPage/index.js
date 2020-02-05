@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
 import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, BackButton, HeaderSignUpPage } from "../../style/styled";
-import { addAdress } from "../../action/login"
+import { addAddress } from "../../action/login"
 import BackIcon from "../../imagens/ícones/back.png"
 
-const AdressForm = [
+const AddressForm = [
     {
         name: 'street',
         type: 'text',
@@ -59,7 +59,7 @@ const AdressForm = [
     },
 ]
 
-export class AdressFormPage extends React.Component {
+export class AddressFormPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -94,7 +94,7 @@ export class AdressFormPage extends React.Component {
                 </StyledHeaderForms>
                 <LoginWrapper onSubmit={this.handleSubmit}>
                     <h1>Meu endereço</h1>
-                    {AdressForm .map(input =>(
+                    {AddressForm .map(input =>(
                         <StyledTextField
                             onChange={this.handleChange}
                             name={input.name}
@@ -118,7 +118,7 @@ const mapStateToProps = state =>({
 })
 
 const mapDispatchToProps = dispatch =>({
-    addAdress: (street, number, neighbourhood, city, state, complement) => dispatch(addAdress(street, number, neighbourhood, city, state, complement)),
+    addAddress: (street, number, neighbourhood, city, state, complement) => dispatch(addAddress(street, number, neighbourhood, city, state, complement)),
     goToLoginPage: () => dispatch(push(routes.loginPage)),
     goToSignUpPage: () => dispatch(push(routes.signUpPage)),
     goToFeedPage: () => dispatch(push(routes.feedPage))
@@ -127,4 +127,4 @@ const mapDispatchToProps = dispatch =>({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-) (AdressFormPage);
+) (AddressFormPage);

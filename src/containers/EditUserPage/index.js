@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
 import { StyledButtonForms, LoginWrapper, StyledTextField, BackButton, HeaderSignUpPage } from "../../style/styled";
-import BackIcon from "../../imagens/ícones/back.png";
+import Back from '../../imagens/ícones/back.png';
+import Header from '../../components/Header';
 
-const EditForm = [
+const EditUserForm = [
     {
         name: 'username',
         type: 'text',
@@ -36,7 +37,7 @@ const EditForm = [
     },
 ]
 
-export class EditDataUserPage extends React.Component {
+export class EditUserPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -60,15 +61,13 @@ export class EditDataUserPage extends React.Component {
 
 
     render() {
-        const { goToLoginPage, goToAdressPage } = this.props
+        const { goToProfilePage, goToAdressPage } = this.props
 
         return (
             <div>
-                <HeaderSignUpPage>
-                    <BackButton onClick={goToLoginPage} src={BackIcon} />
-                </HeaderSignUpPage>
+                <Header title="Editar Perfil" img={Back} onClick={goToProfilePage}/>
                 <LoginWrapper onSubmit={this.handleOnSubmit}>
-                    {EditForm.map(input => (
+                    {EditUserForm.map(input => (
                         <StyledTextField
                             onChange={this.handleFieldChange}
                             name={input.name}
@@ -92,11 +91,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    goToLoginPage: () => dispatch(push(routes.loginPage)),
+    goToProfilePage: () => dispatch(push(routes.profilePage)),
     goToAdressPage: () => dispatch(push(routes.adressFormPage))
 })
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(EditDataUserPage);
+)(EditUserPage);
