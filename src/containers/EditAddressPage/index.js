@@ -2,39 +2,59 @@ import React from 'react';
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-import Loader from "../../components/Loader/Loader";
-import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, BackButton, HeaderSignUpPage } from "../../style/styled";
-import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
+import { StyledButtonForms, LoginWrapper, StyledTextField } from "../../style/styled";
 import BackIcon from "../../imagens/ícones/back.png";
 import Header from '../../components/Header';
 
-const EditAdressForm = [
+const EditAddressForm = [
     {
-        name: 'username',
+        name: 'street',
         type: 'text',
-        label: 'Nome ',
-        placeholder: 'Nome e Sobrenome',
+        label: 'Logradouro ',
+        placeholder: 'Rua/AV.',
         required: true,
         pattern: "[A-Za-z]",
         variant: "outlined",
      },
      {
-        name: 'email',
-        type: 'email',
-        label: 'E-mail: ',
-        placeholder: 'email@email.com',
+        name: 'number',
+        type: 'number',
+        label: 'Número',
+        placeholder: 'Número',
         required: true,
         pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
         variant: "outlined",
      },
-
-    {
-        name: 'cpf',
-        type: 'cpf',
-        label: 'CPF',
-        placeholder: 'Digite cpf com dígito',
+     {
+         name: 'complement',
+         type: 'text',
+         label: 'Complemento',
+         placeholder: 'Apto./Bloco',
+         required: true,
+         variant: "outlined",
+     },
+     {
+        name: 'neighbourhood',
+        type: 'text',
+        label: 'Bairro',
+        placeholder: 'Bairro',
         required: true,
-        pattern: "d{3}.d{3}.d{3}-d{2}",
+        variant: "outlined",
+    },
+    {
+        name: 'city',
+        type: 'text',
+        label: 'Cidade',
+        placeholder: 'Cidade',
+        required: true,
+        variant: "outlined",
+    },
+    {
+        name: 'state',
+        type: 'text',
+        label: 'Estado',
+        placeholder: 'Estado',
+        required: true,
         variant: "outlined",
     },
 ]
@@ -70,7 +90,7 @@ export class EditAddressPage extends React.Component {
             <div>
                 <Header title="Editar Endereço" img={BackIcon} onClick={goToProfilePage}/>
                 <LoginWrapper onSubmit={this.handleOnSubmit}>
-                    {EditAdressForm.map(input => (
+                    {EditAddressForm.map(input => (
                         <StyledTextField
                             onChange={this.handleFieldChange}
                             name={input.name}

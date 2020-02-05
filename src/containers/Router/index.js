@@ -39,7 +39,6 @@ function Router(props) {
         <Route exact path={routes.feedPage} component={FeedPage} />
         <Route exact path={routes.restaurantDetails} component={RestaurantDetails} />
         <Route exact path={routes.searchPage} component={SearchPage} />
-
       </Switch>
     </ConnectedRouter>
   );

@@ -1,7 +1,5 @@
 import React from 'react';
-import { StyledHeader } from '../../style/styled';
-import Back from '../../imagens/ícones/back.png';
-import { StyledImg } from './styled'
+import { StyledImg, StyledHeader } from './styled'
 
 function Header(props) {
     return (

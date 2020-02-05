@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { InputAdornment } from '@material-ui/core';
 import { push } from 'connected-react-router'
 import Tabs from '@material-ui/core/Tabs';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import Footer from '../Footer';
-import { getRestaurants, setRestaurantIdAction } from '../../action/restaurants';
 import Header from '../../components/Header';
-import { FeedContainer, StyledCard, StyledSubHeader, StyledTextField, StyledSearchIcon, StyledAppBar, StyledTabText, StyledCardContainer, StyledCardContent, StyledCardImage, StyledCardDetails } from '../../style/styled'
+import Footer from '../Footer';
+import { getRestaurants, setRestaurantIdAction } from '../../action/products';
+import { FeedContainer, StyledSubHeader, StyledTextField, StyledMain, StyledSearchIcon, StyledAppBar, StyledTabText, StyledCardContainer } from '../../style/styled'
 import { routes } from '../Router';
+import RestaurantCard from '../../components/RestaurantCard'
 
 class FeedPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            search: "",
         }
     }
 
@@ -26,6 +26,13 @@ class FeedPage extends React.Component {
             this.props.getRestaurants()
         };
     }
+
+    handleInputOnChange = event => {
+        const { name, value } = event.target;
+
+        this.setState ({ form: { ...this.state.form, [name]: value }});
+    };
+
 
     handleSetRestaurantId = (restaurantId) => {
         this.props.setRestaurantsDetail(restaurantId)
@@ -41,48 +48,37 @@ class FeedPage extends React.Component {
 
         return (
             <FeedContainer>
-                <Header title="Rappi4" />               
+                <Header title="Rappi4" />   
                 <StyledSubHeader>
-                        <StyledTextField onClick={this.handleSearchInput} type="search" placeholder="Restaurante" variant="outlined"
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <StyledSearchIcon />
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                        <StyledAppBar>
-                            <Tabs
-                                variant="scrollable"
-                                scrollButtons="on"
-                            >
-                                {fetchRestaurants && fetchRestaurants.map((restaurant) => (
-                                    <StyledTabText label={restaurant.category} />
-                                ))}
-                            </Tabs>
-                        </StyledAppBar>                   
-                </StyledSubHeader> 
-                <StyledCardContainer>
-                            {fetchRestaurants && fetchRestaurants.map((restaurant) => (
-                                <StyledCard>
-                                    <StyledCardContent key={restaurant.id}>
-                                        <StyledCardImage 
-                                            onClick={() => this.handleSetRestaurantId(restaurant.id)} 
-                                            component="img" 
-                                            image={restaurant.logoUrl} 
-                                            title="foto do prato" 
-                                            alt="foto do prato" 
-                                        />
-                                        <p>{restaurant.name}</p>
-                                        <StyledCardDetails>
-                                            <p>{restaurant.deliveryTime} min</p>
-                                            <p>Frete: R${restaurant.shipping},00</p>
-                                        </StyledCardDetails>
-                                    </StyledCardContent>
-                                </StyledCard>        
-                            ))}
-                </StyledCardContainer>
+                            <StyledTextField type="search" placeholder="Restaurante" variant="outlined"
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <StyledSearchIcon />
+                                        </InputAdornment>
+                                    ),
+                                }}
+                            />
+                            <StyledAppBar>
+                                <Tabs variant="scrollable">
+                                    {fetchRestaurants && fetchRestaurants.map((restaurant) => (
+                                        <StyledTabText label={restaurant.category} />
+                                    ))}
+                                </Tabs>
+                            </StyledAppBar>                   
+                    </StyledSubHeader> 
+                <StyledMain>         
+                        {fetchRestaurants && fetchRestaurants.map((restaurant) => (
+                            <RestaurantCard 
+                                onClick={() => this.handleSetRestaurantId(restaurant.id)}
+                                key={restaurant.id} 
+                                name={restaurant.name} 
+                                img={restaurant.logoUrl} 
+                                price={restaurant.shipping} 
+                                deliveryTime={restaurant.deliveryTime}
+                            />       
+                        ))}
+                </StyledMain>
                 <Footer />
             </FeedContainer>
         )

@@ -1,7 +1,7 @@
 import React from'react';
 import styled from 'styled-components';
 import { connect } from "react-redux";
-import { Title, Linha, Paragraph , EditContent, Adress, ParagraphDefaultAdress, ParagraphAdress, HistoricParagraph, HistoricLine, HistoricContainer, ContainerOrderCard, TitleOrder, DateOrderCard, SubtotalOrder, ParagraphOnly, EditData, EditAdress } from '../../style/profilePage';
+import { Paragraph , EditContent, Adress, ParagraphDefaultAdress, ParagraphAdress, HistoricParagraph, HistoricLine, HistoricContainer, ContainerOrderCard, TitleOrder, DateOrderCard, SubtotalOrder, ParagraphOnly, EditData, EditAdress } from '../../style/profilePage';
 import Edited from "../../imagens/ícones/edit.svg"
 import Footer from '../Footer';
 import Header from '../../components/Header';
@@ -22,7 +22,7 @@ class ProfilePage extends React.Component {
     }
   
     render() {
-      const { goToEditAddressPage, goToEditUserPage } = this.props
+      const { goToEditAddressPage, goToEditDataUserPage } = this.props
       return (
         <AppWrapper>
             <Header title="Meu Perfil"/>
@@ -30,7 +30,7 @@ class ProfilePage extends React.Component {
                 <Paragraph >Bruna Oliveira</Paragraph>
                 <Paragraph >bruna_o@gmail.com</Paragraph>
                 <Paragraph >(11) 964395291</Paragraph>
-                <EditData src={Edited} onClick={goToEditUserPage}/>
+                <EditData src={Edited} onClick={goToEditDataUserPage}/>
             </EditContent>
 
             <Adress>
@@ -59,7 +59,7 @@ class ProfilePage extends React.Component {
   
   
   const mapDispatchToProps = dispatch => ({
-    goToEditUserPage: () => dispatch(push(routes.editDataUserPage)),
+    goToEditDataUserPage: () => dispatch(push(routes.editDataUserPage)),
     goToEditAddressPage: () => dispatch(push(routes.editAddressPage)),
   })  
   

@@ -6,6 +6,7 @@ import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, Style
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import BackIcon from "../../imagens/ícones/back.png";
 import { signup } from "../../action/login"
+import Header from '../../components/Header';
 
 const CadastroForm = [
     {
@@ -43,8 +44,8 @@ const CadastroForm = [
         variant: "outlined",
     },
     {
-        name: 'password',
-        type: 'confirmPassword',
+        name: 'confirmPassword',
+        type: 'password',
         label: 'Confirmar',
         placeholder: 'Confirme a senha anterior',
         required: true,
@@ -80,14 +81,12 @@ export class SignUpPage extends React.Component {
 
         return (
             <div>
-                <HeaderSignUpPage>
-                    <BackButton onClick={goToLoginPage} src={BackIcon} />
-                </HeaderSignUpPage>
+                <Header img={BackIcon} onClick={goToLoginPage}/>
                 <StyledHeaderForms>
                     <StyledImgForms src={LogoLogin} />
                 </StyledHeaderForms>
                 <LoginWrapper onSubmit={this.handleSubmit}>
-                    <h1>Cadastre-se</h1>
+                    <h3>Cadastre-se</h3>
                     {CadastroForm.map(input => (
                         <StyledTextField
                             onChange={this.handleChange}
@@ -101,7 +100,6 @@ export class SignUpPage extends React.Component {
                         />
                     ))}
                     <StyledButtonForms type="submit" >Criar</StyledButtonForms>
-                    <BackButton onClick={goToLoginPage} src={BackIcon} />
                 </LoginWrapper>
             </div>
         )
