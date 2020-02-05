@@ -8,4 +8,5 @@ export const StyledFooter = styled(BottomNavigation)`
     height: 49px;
     padding-bottom: 50px;
     border-top: 1px solid lightgray;
+    background-color: #ffffff;
 `

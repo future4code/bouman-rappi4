@@ -19,8 +19,6 @@ export const Linha = styled.hr`
     color: rgba(0, 0, 0, 0.25);
     `
 
-// ----------------------------------------------------
-
 export const EditContent = styled.div`
     font-family: Roboto;
     text-align: initial;
@@ -43,7 +41,6 @@ export const Paragraph = styled.p`
     color: var(--black);
     `
 
-// ----------------------------------------------------
 
 export const Adress = styled.div`
     font-family: Roboto;
@@ -57,9 +54,10 @@ export const Adress = styled.div`
     font-family: Roboto;
     display: flex-box;
     position: absolute;
-    bottom: 70%
+    bottom: 70%;
     top: 22%;
     `
+
 export const ParagraphDefaultAdress = styled.p`
     font-size: 16px;
     color: #b8b8b8;
@@ -75,7 +73,7 @@ export const ParagraphAdress = styled.p`
     line-height: normal;
     color: black;
     `
-  //-----------------------------------------------------
+
 
 export const HistoricContainer = styled.div`
     font-family: Roboto;
@@ -86,7 +84,7 @@ export const HistoricContainer = styled.div`
     font-family: Roboto;
     display: flex-box;
     position: absolute;
-    bottom: 70%
+    bottom: 70%;
     top: 35%;
     `
 export const HistoricParagraph = styled.p`
@@ -105,7 +103,6 @@ export const HistoricParagraph = styled.p`
     width: 95%;
     color: black;
     `
-// ---------------------------------------------------
     
 export const ContainerOrderCard = styled.div`
     font-family: Roboto;
@@ -115,7 +112,7 @@ export const ContainerOrderCard = styled.div`
     border: solid 1px #b8b8b8;
     margin-left: 2vw;
     position: absolute;
-    bottom: 40%
+    bottom: 40%;
     top: 43%;
     padding-left: 2vh;
     `
@@ -177,7 +174,7 @@ export const EditAdress = styled.img`
     width: 24px;
     height: 24px;
     position: absolute;
-    top: 30%%;
+    top: 30%;
     bottom: 58%;
     left: 90%;
     right: 10%;

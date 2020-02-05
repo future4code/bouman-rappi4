@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
 // import Loader from "../../components/Loader/Loader";
-import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms } from "../../style/styled";
+import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, SignUpButton } from "../../style/styled";
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import { login } from "../../action/login"
 
@@ -61,7 +61,7 @@ export class LoginPage extends React.Component {
                     />
 
                     <StyledButtonForms type="submit">Entrar</StyledButtonForms>
-                    <span >Não possui Cadastro?<button onClick={goToSignUpPage}>Clique aqui.</button></span>
+                    <span >Não possui Cadastro?<SignUpButton onClick={goToSignUpPage}>Clique aqui.</SignUpButton></span>
                 </LoginWrapper>
             </div>
         )
