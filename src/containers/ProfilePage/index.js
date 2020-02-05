@@ -61,9 +61,6 @@ class ProfilePage extends React.Component {
   const mapDispatchToProps = dispatch => ({
     goToEditDataUserPage: () => dispatch(push(routes.editDataUserPage)),
     goToEditAddressPage: () => dispatch(push(routes.editAddressPage)),
-  })
-  
-  
+  })  
   
   export default connect(null, mapDispatchToProps)(ProfilePage);
-  

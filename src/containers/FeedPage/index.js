@@ -37,13 +37,15 @@ class FeedPage extends React.Component {
     handleSetRestaurantId = (restaurantId) => {
         this.props.setRestaurantsDetail(restaurantId)
         this.props.goToRestaurantDetails()
-        console.log(restaurantId)
     }
-    render() {
 
+    handleSearchInput = () => {
+        this.props.goToSearchPage()
+    }
+
+    render() {
         const { fetchRestaurants } = this.props
 
-        console.log(fetchRestaurants)
         return (
             <FeedContainer>
                 <Header title="Rappi4" />   
@@ -76,20 +78,23 @@ class FeedPage extends React.Component {
                                 deliveryTime={restaurant.deliveryTime}
                             />       
                         ))}
-                </StyledMain>   
+                </StyledMain>
                 <Footer />
             </FeedContainer>
         )
     }
 }
+
 const mapStateToProps = state => ({
     fetchRestaurants: state.restaurantsReducer.allRestaurants
 })
+
 const mapDispatchToProps = dispatch => ({
     getRestaurants: () => dispatch(getRestaurants()),
     goToLoginPage: () => dispatch(push(routes.loginPage)),
     goToRestaurantDetails: () => dispatch(push(routes.restaurantDetails)),
-    setRestaurantsDetail: (restaurantId) => dispatch(setRestaurantIdAction(restaurantId))
+    setRestaurantsDetail: (restaurantId) => dispatch(setRestaurantIdAction(restaurantId)),
+    goToSearchPage: () => dispatch(push(routes.searchPage)),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(FeedPage);
