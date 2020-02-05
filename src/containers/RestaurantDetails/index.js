@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import { routes } from '../Router';
 import { push } from 'connected-react-router';
-import { getRestaurantsDetails } from '../../action/products';
+import { getRestaurantsDetails } from '../../action/restaurants';
 import Footer from '../Footer';
 import Loader from '../../components/Loader/Loader';
 import { StyledMainProducts } from '../../style/styled';
