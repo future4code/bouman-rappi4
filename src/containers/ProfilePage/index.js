@@ -7,6 +7,7 @@ import Footer from '../Footer';
 import Header from '../../components/Header';
 import { routes } from '../Router';
 import { push } from 'connected-react-router'
+import { getProfile } from '../../action/profile'
 
 export const AppWrapper = styled.div`
 width: 100%;
@@ -20,30 +21,44 @@ class ProfilePage extends React.Component {
     
       };
     }
+
+    componentDidMount(){
+      this.props.getProfile()
+    }
   
     render() {
       const { goToEditAddressPage, goToEditDataUserPage } = this.props
+      const { name, email, cpf, address } = this.props.getToProfile
+
+      console.log("testando profile", this.props.getToProfile.name)            
+
       return (
         <AppWrapper>
             <Header title="Meu Perfil"/>
-            <EditContent>
-                <Paragraph >Bruna Oliveira</Paragraph>
-                <Paragraph >bruna_o@gmail.com</Paragraph>
-                <Paragraph >(11) 964395291</Paragraph>
-                <EditData src={Edited} onClick={goToEditDataUserPage}/>
-            </EditContent>
 
-            <Adress>
-                <ParagraphDefaultAdress> Endereço cadastrado </ParagraphDefaultAdress>
-                <ParagraphAdress>Rua Alessandra Vieira, 42 - Santana</ParagraphAdress>
-                <EditAdress src={Edited} onClick={goToEditAddressPage}/>
-            </Adress>
-            <HistoricContainer>
-                <HistoricParagraph>Histórico de pedidos</HistoricParagraph>
-                <HistoricLine/>
-                {/* <ParagraphOnly>Você não realizou nenhum pedido</ParagraphOnly> */}
-            </HistoricContainer>
+          
+              <div>
+                  <EditContent>
+                      <Paragraph></Paragraph>
+                      <Paragraph> NOME: {name}</Paragraph>
+                      <Paragraph> EMAIL: {email}</Paragraph>
+                      <Paragraph >CPF: {cpf}</Paragraph>
+                      <EditData src={Edited} onClick={goToEditDataUserPage}/>
+                  </EditContent>
 
+                  <Adress>
+                      <ParagraphDefaultAdress> Endereço cadastrado </ParagraphDefaultAdress>
+                      <ParagraphAdress>{address}</ParagraphAdress>
+                      <EditAdress src={Edited} onClick={goToEditAddressPage}/>
+                  </Adress>
+              </div>
+          
+                  <HistoricContainer>
+                      <HistoricParagraph>Histórico de pedidos</HistoricParagraph>
+                      <HistoricLine/>
+                      {/* <ParagraphOnly>Você não realizou nenhum pedido</ParagraphOnly> */}
+                  </HistoricContainer>
+              
             <ContainerOrderCard>
 
                 <TitleOrder>Bullguer Vila Madalena</TitleOrder>
@@ -57,10 +72,15 @@ class ProfilePage extends React.Component {
     }
   }
   
+  const mapStateToProps = state => ({
+    getToProfile: state.profileReducer.profile
+  })
   
   const mapDispatchToProps = dispatch => ({
     goToEditDataUserPage: () => dispatch(push(routes.editDataUserPage)),
     goToEditAddressPage: () => dispatch(push(routes.editAddressPage)),
+    getProfile: () => dispatch(getProfile())
+
   })  
   
-  export default connect(null, mapDispatchToProps)(ProfilePage);
+  export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
