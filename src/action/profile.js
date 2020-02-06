@@ -30,7 +30,7 @@ export const getProfile = () => async (dispatch) => {
 
 //edita os dados do usuário
 
-export const updateProfile = (id,name,email,cpf,hasAddress,addres) => async (dispatch) => {
+export const updateProfile = (name,email,cpf) => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const axiosHeader = {
         headers: {
@@ -39,17 +39,16 @@ export const updateProfile = (id,name,email,cpf,hasAddress,addres) => async (dis
     }
 
     const profileInfo = {
-        id,
         name,
         email,
         cpf,
-        hasAddress,
-        addres,
     }
 
     try{
-        await axios.put(`${baseURL}/profile`, axiosHeader,profileInfo)
+        await axios.put(`${baseURL}/profile`,profileInfo, axiosHeader)
         dispatch(getProfile())
+        window.alert("Sucesso")
+
     }catch{
         window.alert("Erro ao editar perfil")
     }

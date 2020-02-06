@@ -5,6 +5,7 @@ import { routes } from "../Router";
 import { StyledButtonForms, LoginWrapper, StyledTextField } from "../../style/styled";
 import BackIcon from "../../imagens/ícones/back.png";
 import Header from '../../components/Header';
+import { getFullAddress, addAddress } from "../../action/login"
 
 const EditAddressForm = [
     {
@@ -60,41 +61,60 @@ const EditAddressForm = [
 ]
 
 export class EditAddressPage extends React.Component {
-
     constructor(props) {
         super(props);
-
         this.state = {
             form: {}
         }
 
     }
+    componentDidMount() {
+        const token = window.localStorage.getItem("token")
+        if(token === null){
+          this.props.goToLoginPage()
+        } else {
+            this.props.getFullAddress()
+        };
+    }
+
+    componentDidUpdate (prevProps) {
+        if (prevProps.edditAddress !== this.props.edditAddress){
+            this.setState({form: this.props.edditAddress})
+        }
+    }
 
     handleChange = event => {
         this.setState({
-            [event.target.name]: event.target.value
+            form:  {
+                ...this.state.form,
+                [event.target.name]: event.target.value
+            
+            }
         })
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const { username, email, password } = this.state
-        this.props.signup(username, email, password)
+        const { street, number, neighbourhood, city, state, complement } = this.state.form
+        this.props.addAddress(street, number, neighbourhood, city, state, complement)
+        console.log(this.state.form)
     }
 
-
     render() {
+
+
         const { goToProfilePage, goToAdressPage } = this.props
 
         return (
             <div>
                 <Header title="Editar Endereço" img={BackIcon} onClick={goToProfilePage}/>
-                <LoginWrapper onSubmit={this.handleOnSubmit}>
+                <LoginWrapper onSubmit={this.handleSubmit}>
                     {EditAddressForm.map(input => (
                         <StyledTextField
-                            onChange={this.handleFieldChange}
+                            onChange={this.handleChange}
                             name={input.name}
                             type={input.type}
+                            value={this.state.form[input.name]}
                             label={input.label}
                             required={input.required}
                             placeholder={input.placeholder}
@@ -102,6 +122,8 @@ export class EditAddressPage extends React.Component {
                             variant={input.variant}
                         />
                     ))}
+
+                    
                     <StyledButtonForms type="submit" onClick={goToAdressPage}>Salvar</StyledButtonForms>
                 </LoginWrapper>
             </div>
@@ -110,12 +132,16 @@ export class EditAddressPage extends React.Component {
 }       
 
 const mapStateToProps = state => ({
+    edditAddress: state.restaurantsReducer.edditAddress
 
 })
 
 const mapDispatchToProps = dispatch => ({
     goToProfilePage: () => dispatch(push(routes.profilePage)),
-    goToAdressPage: () => dispatch(push(routes.adressFormPage))
+    goToAdressPage: () => dispatch(push(routes.adressFormPage)),
+    getFullAddress: () => dispatch(getFullAddress()),
+    addAddress: (street, number, neighbourhood, city, state, complement) => dispatch(addAddress(street, number, neighbourhood, city, state, complement)),
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditAddressPage);
