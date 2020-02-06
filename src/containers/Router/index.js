@@ -10,7 +10,7 @@ import EditAddressPage from "../EditAddressPage";
 import EditDataUserPage from "../EditDataUserPage";
 import CartPage from "../CartPage";
 import RestaurantDetails from "../RestaurantDetails";
-import Test from "../../action/test";
+
 
 export const routes = {
   loginPage: "/",

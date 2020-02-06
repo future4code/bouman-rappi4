@@ -92,7 +92,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     goToProfilePage: () => dispatch(push(routes.profilePage)),
-    goToAdressPage: () => dispatch(push(routes.adressFormPage))
+    goToAdressPage: () => dispatch(push(routes.addressFormPage))
 })
 
 export default connect(
