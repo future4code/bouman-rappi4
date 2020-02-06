@@ -2,6 +2,7 @@ const initialState = {
     allRestaurants: [],
     selectedRestaurantId: "",
     selectedRestaurant: {},
+    edditAddress:[{}]
 }
 
 const restaurantsReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const restaurantsReducer = (state = initialState, action) => {
         case "SET_RESTAURANT_DETAILS":
             const restaurantDetailsAction = action.payload.restaurantDetail
             return { ...state, selectedRestaurant: restaurantDetailsAction}
+        
+        case "SET_FULL_ADDRESS":
+            const setFullAddressAction = action.payload.address
+            return { ...state, edditAddress: setFullAddressAction}
+            
         default:
             return state;
     }

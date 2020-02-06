@@ -66,3 +66,21 @@ export const addAddress = (street, number, neighbourhood, city, state, complemen
 }
 }
 
+export const setFullAddressAction = (address) => ({
+  type: "SET_FULL_ADDRESS",
+  payload: {
+    address,
+  }
+})
+
+export const getFullAddress = () => async (dispatch) => {
+  const headers = { headers: { auth: window.localStorage.getItem("token") } }
+  
+  try{
+  const response = await axios.get(`${baseURL}profile/address`, headers);
+  dispatch(setFullAddressAction(response.data.address))
+ }catch{
+  window.alert("falha ao carregar informações")
+
+}
+}
