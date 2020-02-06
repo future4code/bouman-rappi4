@@ -24,25 +24,7 @@ export class RestaurantDetails extends Component {
         }
     }
 
-
-    render() {
-
-
-        // let filteredProductsAcompanhamento = selectedRestaurant.products.filter((product) => {
-        //     return product.category === "acompanhamento"
-        // })
-
-        // let filteredProductsSobremesa = selectedRestaurant.products.filter((product) => {
-        //     return product.category === "Sobremesa"
-        // })
-
-        // let filteredProductsBebida = selectedRestaurant.products.filter((product) => {
-        //     return product.category === "Bebida"
-        // })
-
-        // let filteredProductsLanche = selectedRestaurant.products.filter((product) => {
-        //     return product.category === "Lanche"
-        // })
+    render() {       
 
         const { selectedRestaurant, gotToFeedPage } = this.props
 
@@ -57,33 +39,11 @@ export class RestaurantDetails extends Component {
                     />
                 )}
             </Fragment>
-        )
-
-        let orderedCategory;
-
-        // if(selectedRestaurant.products){
-        //     orderedCategory = selectedRestaurant.products.sort((a,b) => {
-        //         if(a.category < b.category){
-        //             return 1;
-        //         } else {
-        //             return -1;
-        //         }
-        //     });
-        // }
-        // const categoryIsReady = !selectedRestaurant.products ? <Loader/> : (
-        //     <Fragment>
-        //         {orderedCategory.map((section) =>
-        //             <div>
-        //                 {section.category}
-        //             </div>
-        //         )}
-        //     </Fragment>
-        // )
+        )   
 
         return (
             <StyledMainProducts>
                 <Header title={selectedRestaurant.name} img={Back} onClick={gotToFeedPage}/>
-                {/* {categoryIsReady} */}
                 <SelectedRestaurantCard 
                     key={selectedRestaurant.id} 
                     img={selectedRestaurant.logoUrl} 
