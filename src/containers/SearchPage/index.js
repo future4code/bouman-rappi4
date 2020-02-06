@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TextField, InputAdornment, Input } from '@material-ui/core';
+import { TextField, InputAdornment } from '@material-ui/core';
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 import styled from 'styled-components';
 import { push } from 'connected-react-router';
 import { routes } from '../Router';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Footer from '../Footer';
-import { getProducts } from '../../action/products';
+import { getRestaurants } from '../../action/restaurants';
 import Header from '../../components/Header';
 
 const FeedContainer = styled.main`
@@ -19,7 +15,7 @@ const FeedContainer = styled.main`
     align-items: center;
 `
 
-const StyledDiv = styled.div`
+const StyledDivTeste = styled.div`
    position: fixed;
    background: white;
    padding: 50px;
@@ -43,32 +39,57 @@ const StyledSearchIcon = styled(SearchOutlinedIcon)`
 `
 
 class SearchPage extends React.Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         form: [],
+         searchTerms: "",
+      }
+   }
 
    componentDidMount() {
-      this.props.getProducts()
+     this.props.getRestaurants()
+   }   
+
+   handleInputChange = (event) => {
+      const { value } = event.target;
+      this.setState({ searchTerms: value })
+   }
+
+   handleOnSubmit = () => {
+      
    }
 
    render() {
+
+      
       return (
          <FeedContainer>
             <Header title="Rappi4" />
-            <StyledDiv>
-               COLOR
-            </StyledDiv>
+            <StyledDivTeste>
+               teste
+            </StyledDivTeste>
             <StyledSubHeader>
-               <StyledTextField type="search" placeholder="Restaurante" variant="outlined"
-                  InputProps={{
-                     startAdornment: (
-                        <InputAdornment position="start">
-                           <StyledSearchIcon />
-                        </InputAdornment>
-                     ),
-                  }}
-               />
+               <form>
+                  <StyledTextField 
+                     autoFocus 
+                     onChange={this.handleInputChange} 
+                     type="search" 
+                     placeholder="Restaurante" 
+                     variant="outlined"
+                     InputProps={{
+                        startAdornment: (
+                           <InputAdornment position="start">
+                              <StyledSearchIcon />
+                           </InputAdornment>
+                        ),
+                     }}
+                  />
+               </form>
             </StyledSubHeader>
 
             <div>
-
+              
             </div>
 
             <Footer />
@@ -78,11 +99,11 @@ class SearchPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-   getToProducts: state.products.allProducts
+   fetchRestaurants: state.restaurantsReducer.allRestaurants
 })
 
 const mapDispatchToProps = dispatch => ({
-   getProducts: () => dispatch(getProducts()),
+   getRestaurants: () => dispatch(getRestaurants()),
 })
 
 export default connect(

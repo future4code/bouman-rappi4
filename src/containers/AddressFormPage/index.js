@@ -5,12 +5,13 @@ import { routes } from "../Router";
 import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, BackButton, HeaderSignUpPage } from "../../style/styled";
 import { addAddress } from "../../action/login"
 import BackIcon from "../../imagens/ícones/back.png"
+import Header from '../../components/Header';
 
 const AddressForm = [
     {
         name: 'street',
         type: 'text',
-        label: 'street ',
+        label: 'Logradouro ',
         placeholder: 'Rua/AV.',
         required: true,
         pattern: "[A-Za-z]",
@@ -83,17 +84,15 @@ export class AddressFormPage extends React.Component {
     }
 
     render() {
-        const { goToLoginPage, goToFeedPage, goToSignUpPage } = this.props
+        const { goToSignUpPage } = this.props
         
         return (
             <div>
+                <Header img={BackIcon} onClick={goToSignUpPage}/>
                 <StyledHeaderForms>
-                    <HeaderSignUpPage>
-                        <BackButton onClick={goToSignUpPage} src={BackIcon}/>
-                    </HeaderSignUpPage>
+                    <h3>Meu endereço</h3>
                 </StyledHeaderForms>
                 <LoginWrapper onSubmit={this.handleSubmit}>
-                    <h1>Meu endereço</h1>
                     {AddressForm .map(input =>(
                         <StyledTextField
                             onChange={this.handleChange}

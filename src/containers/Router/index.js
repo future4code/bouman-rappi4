@@ -10,7 +10,7 @@ import EditAddressPage from "../EditAddressPage";
 import EditDataUserPage from "../EditDataUserPage";
 import CartPage from "../CartPage";
 import RestaurantDetails from "../RestaurantDetails";
-
+import SearchPage from "../SearchPage";
 
 export const routes = {
   loginPage: "/",
@@ -22,7 +22,7 @@ export const routes = {
   editDataUserPage: "/profile/edit-user",
   cartPage: "/cart",
   restaurantDetails: "/restaurantDetails",
-
+  searchPage: "/feed/search",
 }; 
 
 function Router(props) {
@@ -38,6 +38,7 @@ function Router(props) {
         <Route exact path={routes.cartPage} component={CartPage} />
         <Route exact path={routes.feedPage} component={FeedPage} />
         <Route exact path={routes.restaurantDetails} component={RestaurantDetails} />
+        <Route exact path={routes.searchPage} component={SearchPage} />
       </Switch>
     </ConnectedRouter>
   );
