@@ -5,7 +5,7 @@ import { push } from 'connected-react-router'
 import Tabs from '@material-ui/core/Tabs';
 import Header from '../../components/Header';
 import Footer from '../Footer';
-import { getRestaurants, setRestaurantIdAction } from '../../action/products';
+import { getRestaurants, setRestaurantIdAction } from '../../action/restaurants';
 import { FeedContainer, StyledSubHeader, StyledTextField, StyledMain, StyledSearchIcon, StyledAppBar, StyledTabText, StyledCardContainer } from '../../style/styled'
 import { routes } from '../Router';
 import RestaurantCard from '../../components/RestaurantCard'

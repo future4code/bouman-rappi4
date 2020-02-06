@@ -3,7 +3,6 @@ const initialState = {
 }
 
 const orderReducer = (state = initialState, action) => {
-    console.log("testando reducer order", action.payload)
 
     switch(action.type){
         case "SET_ORDER":
