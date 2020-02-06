@@ -4,6 +4,7 @@ export const CardContainer = styled.div `
     width: 90%;
     min-height: 200px;
     margin: 10px;
+    font-family: Roboto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

@@ -1,97 +1,97 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TextField, InputAdornment } from '@material-ui/core';
-import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
-import styled from 'styled-components';
+import { InputAdornment } from '@material-ui/core';
 import { push } from 'connected-react-router';
 import { routes } from '../Router';
 import Footer from '../Footer';
-import { getRestaurants } from '../../action/restaurants';
+import { FormWrapper, StyledTextField, StyledSearchMain, FeedContainer, StyledSubHeader, StyledSearchIcon } from '../../style/styled'
+import { getRestaurants, setRestaurantIdAction } from '../../action/restaurants';
 import Header from '../../components/Header';
-
-const FeedContainer = styled.main`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
-
-const StyledDivTeste = styled.div`
-   position: fixed;
-   background: white;
-   padding: 50px;
-   z-index: -1;
-   width: 100%;
-   color: transparent;
-`
-
-const StyledSubHeader = styled.div`
-    position: fixed;
-    top: 50px;
-`
-
-const StyledTextField = styled(TextField)`
-    text-align: center;
-    width: 450px;
-`
-
-const StyledSearchIcon = styled(SearchOutlinedIcon)`
-    opacity: 30%;
-`
+import Back from '../../imagens/ícones/back.png';
+import RestaurantCard from '../../components/RestaurantCard'
 
 class SearchPage extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         form: [],
-         searchTerms: "",
+         search: "",
       }
    }
 
    componentDidMount() {
-     this.props.getRestaurants()
-   }   
+      const token = window.localStorage.getItem("token")
+      if(token === null){
+        this.props.goToLoginPage()
+      } else {
+          this.props.getRestaurants()
+      };
+   } 
 
-   handleInputChange = (event) => {
-      const { value } = event.target;
-      this.setState({ searchTerms: value })
-   }
 
-   handleOnSubmit = () => {
-      
-   }
+   handleFieldChange = event => {
+      this.setState({
+         [event.target.name]: event.target.value
+      });
+
+      this.setState({ search: event.target.value })
+   };
+
+   handleSetRestaurantId = (restaurantId) => {
+      this.props.setRestaurantsDetail(restaurantId)
+      this.props.goToRestaurantDetails()
+   };
 
    render() {
+      const { search } = this.state
+      const { goToFeedPage, fetchRestaurants } = this.props
 
-      
+      let filteredRestaurants = fetchRestaurants.filter((restaurant) => {
+         return restaurant.name === search
+      })
+
+      let mapRestaurants = (<p>Não encontramos :(</p>)
+
+      if(search.length === 0){
+         mapRestaurants = (<p>Busque pelo nome do restaurante</p>)
+      } else if(filteredRestaurants.length > 0){
+         mapRestaurants = filteredRestaurants.map((restaurant) => 
+            <RestaurantCard 
+               onClick={() => this.handleSetRestaurantId(restaurant.id)}
+               key={restaurant.id} 
+               name={restaurant.name} 
+               img={restaurant.logoUrl} 
+               price={restaurant.shipping} 
+               deliveryTime={restaurant.deliveryTime}
+            />       
+         )
+      }
+
       return (
          <FeedContainer>
-            <Header title="Rappi4" />
-            <StyledDivTeste>
-               teste
-            </StyledDivTeste>
+            <Header title="Busca" img={Back} onClick={goToFeedPage}/>
             <StyledSubHeader>
-               <form>
-                  <StyledTextField 
-                     autoFocus 
-                     onChange={this.handleInputChange} 
-                     type="search" 
-                     placeholder="Restaurante" 
+               <FormWrapper>
+                  <StyledTextField
+                     color="primary"
+                     onChange={this.handleFieldChange.bind(this)}
+                     name="posts"
+                     type="search"
+                     placeholder="Resturante"
                      variant="outlined"
+                     value={search}
                      InputProps={{
                         startAdornment: (
                            <InputAdornment position="start">
-                              <StyledSearchIcon />
+                                 <StyledSearchIcon />
                            </InputAdornment>
                         ),
                      }}
                   />
-               </form>
+               </FormWrapper>
             </StyledSubHeader>
-
-            <div>
-              
-            </div>
-
+            <StyledSearchMain>
+               {mapRestaurants}
+            </StyledSearchMain>
             <Footer />
          </FeedContainer>
       )
@@ -104,6 +104,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
    getRestaurants: () => dispatch(getRestaurants()),
+   goToFeedPage: () => dispatch(push(routes.feedPage)),
+   goToRestaurantDetails: () => dispatch(push(routes.restaurantDetails)),
+   setRestaurantsDetail: (restaurantId) => dispatch(setRestaurantIdAction(restaurantId)),
 })
 
 export default connect(
