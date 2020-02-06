@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { CardContainer, CardAdressSection, CardMain, ShippingContainer, StyledH4, SubTitle, TotalContainer, StyledButtonConfirm } from './styled';
+import {ParagraphDefaultAdress} from '../../style/profilePage'
 import Footer from '../Footer';
 import Header from '../../components/Header';
 import { push } from 'connected-react-router';
@@ -23,7 +24,7 @@ export class CartPage extends Component {
             <CardContainer>
                 <Header title="Meu Carrinho"/>
                 <CardAdressSection>
-                    <p>Endereço de entrega</p>
+                    <ParagraphDefaultAdress>Endereço de entrega</ParagraphDefaultAdress>
                     <p>{address}</p>
                 </CardAdressSection>
                 <CardMain>

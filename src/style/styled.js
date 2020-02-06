@@ -114,15 +114,39 @@ export const BackButton = styled.img `
     height: auto;
 `
 
-// seila 
+// Estilizações gerais 
 
+export const StyledSearchMain = styled.main `
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    position: fixed;
+    top: 110px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff;
+`
+
+export const FormWrapper = styled.form`
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    place-content: center;
+    justify-items: center;
+    display: grid;
+    color: white;
+`;
 
 export const FeedContainer = styled.main`
+    min-height: 100vh;
+    font-family: Roboto;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
 `
+
 export const StyledSubHeader= styled.div`
     width: 100%;
     display: flex;
@@ -137,10 +161,11 @@ export const StyledSubHeader= styled.div`
 export const StyledTextField = styled(TextField)`
     background-color: #ffffff;
     text-align: center;
-    width: 90%;
+    width: 320px;
     z-index: 2;
     border-radius: 2px;
 `
+
 export const StyledSearchIcon = styled(SearchOutlinedIcon)`
     opacity: 30%;
 `

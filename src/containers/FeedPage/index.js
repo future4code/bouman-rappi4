@@ -50,7 +50,7 @@ class FeedPage extends React.Component {
             <FeedContainer>
                 <Header title="Rappi4" />   
                 <StyledSubHeader>
-                            <StyledTextField type="search" placeholder="Restaurante" variant="outlined"
+                            <StyledTextField onClick={this.handleSearchInput} type="search" placeholder="Restaurante" variant="outlined"
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">

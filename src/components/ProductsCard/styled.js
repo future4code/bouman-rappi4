@@ -4,6 +4,7 @@ export const ProductCardContainer = styled.div `
     width: 90%;
     height: 130px;
     display: flex;
+    font-family: Roboto;
     justify-content: center;
     align-items: flex-start;
     margin-bottom: 20px;

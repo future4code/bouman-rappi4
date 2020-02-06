@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 
 export const CardContainer = styled.div `
     width: 100%;
+    font-family: Roboto;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
