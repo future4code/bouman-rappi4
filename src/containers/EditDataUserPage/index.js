@@ -5,10 +5,12 @@ import { routes } from "../Router";
 import { StyledButtonForms, LoginWrapper, StyledTextField } from "../../style/styled";
 import Back from '../../imagens/ícones/back.png';
 import Header from '../../components/Header';
+import { getProfile, updateProfile } from '../../action/profile';
+
 
 const EditDataUserForm = [
     {
-        name: 'username',
+        name: 'name',
         type: 'text',
         label: 'Nome ',
         placeholder: 'Nome e Sobrenome',
@@ -40,23 +42,42 @@ const EditDataUserForm = [
 export class EditDataUserPage extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             form: {}
         }
 
     }
 
+    componentDidMount() {
+        const token = window.localStorage.getItem("token")
+        if(token === null){
+          this.props.goToLoginPage()
+        } else {
+            this.props.getProfile()
+        };
+    }
+
+    componentDidUpdate (prevProps) {
+        if (prevProps.profile !== this.props.profile){
+            this.setState({form: this.props.profile})
+        }
+    }
+
     handleChange = event => {
         this.setState({
-            [event.target.name]: event.target.value
+            form:  {
+                ...this.state.form,
+                [event.target.name]: event.target.value
+            
+            }
         })
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const { username, email, password } = this.state
-        this.props.signup(username, email, password)
+        const { name, email, cpf } = this.state.form
+        this.props.updateProfile( name, email, cpf )
+        console.log(this.state.form)
     }
 
 
@@ -66,12 +87,13 @@ export class EditDataUserPage extends React.Component {
         return (
             <div>
                 <Header title="Editar Perfil" img={Back} onClick={goToProfilePage}/>
-                <LoginWrapper onSubmit={this.handleOnSubmit}>
+                <LoginWrapper onSubmit={this.handleSubmit}>
                     {EditDataUserForm.map(input => (
                         <StyledTextField
-                            onChange={this.handleFieldChange}
+                            onChange={this.handleChange}
                             name={input.name}
                             type={input.type}
+                            value={this.state.form[input.name]}
                             label={input.label}
                             required={input.required}
                             placeholder={input.placeholder}
@@ -79,19 +101,23 @@ export class EditDataUserPage extends React.Component {
                             variant={input.variant}
                         />
                     ))}
-                    <StyledButtonForms type="submit" onClick={goToAdressPage}>Salvar</StyledButtonForms>
+                    <StyledButtonForms type="submit">Salvar</StyledButtonForms>
                 </LoginWrapper>
             </div>
         )
     }
 }       
 
-const mapDispatchToProps = dispatch => ({
-    goToProfilePage: () => dispatch(push(routes.profilePage)),
-    goToAdressPage: () => dispatch(push(routes.addressFormPage))
+const mapStateToProps = state => ({
+    profile: state.profileReducer.profile
+
 })
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(EditDataUserPage);
+const mapDispatchToProps = dispatch => ({
+    goToProfilePage: () => dispatch(push(routes.profilePage)),
+    goToAdressPage: () => dispatch(push(routes.addressFormPage)),
+    getProfile: () => dispatch(getProfile()), 
+    updateProfile: (name,email,cpf) => dispatch(updateProfile(name,email,cpf))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditDataUserPage);

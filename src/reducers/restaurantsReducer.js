@@ -2,7 +2,7 @@ const initialState = {
     allRestaurants: [],
     selectedRestaurantId: "",
     selectedRestaurant: {},
-    edditAddress:[{}]
+    edditAddress:{}
 }
 
 const restaurantsReducer = (state = initialState, action) => {
