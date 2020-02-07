@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`teste componente SelectedRestaurantCard renders correctly 1`] = `
+<div
+  className="sc-bdVaJa gGKmbI"
+>
+  <img
+    className="sc-bZQynM elEuHe"
+  />
+  <div
+    className="sc-bwzfXH fSIllJ"
+  />
+  <div
+    className="sc-htpNat UOjDe"
+  >
+    <div
+      className="sc-EHOje hiLVtM"
+    />
+    <div
+      className="sc-bxivhb fBgaFq"
+    >
+      <div>
+         min 
+      </div>
+      <div
+        className="sc-ifAKCX leePPw"
+      >
+        Frete R$
+        ,00
+      </div>
+    </div>
+    <div />
+  </div>
+</div>
+`;

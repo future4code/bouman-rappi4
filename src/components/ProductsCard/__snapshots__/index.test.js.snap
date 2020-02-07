@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`teste componente ProductCard renders correctly 1`] = `
+<div
+  className="sc-bdVaJa klyngg"
+>
+  <img
+    alt="image"
+    className="sc-bwzfXH dKXYyA"
+  />
+  <div
+    className="sc-htpNat jdcmRH"
+  >
+    <h3
+      className="sc-bxivhb bOgZRB"
+    />
+    <div
+      className="sc-ifAKCX ftMmuE"
+    />
+    <div
+      className="sc-EHOje gzyEmj"
+    >
+      R$ 
+    </div>
+  </div>
+  <button
+    onClick={[Function]}
+  >
+     Adicionar
+  </button>
+</div>
+`;

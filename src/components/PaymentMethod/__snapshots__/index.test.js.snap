@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`teste componente PaymentMethod renders correctly 1`] = `
+<div
+  className="sc-bdVaJa fSVYCz"
+>
+  <form
+    className="sc-bwzfXH jYZWGa"
+  >
+    <span>
+      Débito
+      <input
+        name="débito"
+        type="radio"
+        value="Débito"
+      />
+    </span>
+    <span>
+      Crédito
+      <input
+        name="cartão de crédito"
+        type="radio"
+        value="Crédito"
+      />
+    </span>
+  </form>
+</div>
+`;

@@ -10,7 +10,7 @@ import Header from '../../components/Header';
 import Back from '../../imagens/ícones/back.png';
 import RestaurantCard from '../../components/RestaurantCard'
 
-class SearchPage extends React.Component {
+export class SearchPage extends React.Component {
    constructor(props) {
       super(props);
       this.state = {

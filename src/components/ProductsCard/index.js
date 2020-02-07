@@ -4,7 +4,7 @@ import { Dialog } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { placeOrder } from '../../action/order';
 
-class ProductCard extends Component {
+export class ProductCard extends Component {
     constructor(props) {
         super(props)
         this.state = {

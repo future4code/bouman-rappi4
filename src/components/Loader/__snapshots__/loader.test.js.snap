@@ -6,7 +6,7 @@ exports[`teste componente Loader renders correctly 1`] = `
 >
   <img
     alt="deveria ter uma imagem"
-    className="sc-htpNat fhkeSw"
+    className="sc-htpNat fQBuIK"
     src="logo-future-eats.svg"
   />
 </div>
