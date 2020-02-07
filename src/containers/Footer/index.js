@@ -10,22 +10,18 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
 export class Footer extends Component {
     render() {
-        
+
         const { goToFeedPage, goToCartPage, goToProfilePage } = this.props
 
         return (
             <StyledFooter>
-                <BottomNavigationAction onClick={goToFeedPage} icon={<HomeOutlinedIcon fontSize="medium"/>} />
-                <BottomNavigationAction onClick={goToCartPage} icon={<ShoppingCartOutlinedIcon fontSize="medium"/>} />
-                <BottomNavigationAction onClick={goToProfilePage} icon={<PersonOutlineOutlinedIcon fontSize="medium"/>} />
+                <BottomNavigationAction onClick={goToFeedPage} icon={<HomeOutlinedIcon fontSize="medium" />} />
+                <BottomNavigationAction onClick={goToCartPage} icon={<ShoppingCartOutlinedIcon fontSize="medium" />} />
+                <BottomNavigationAction onClick={goToProfilePage} icon={<PersonOutlineOutlinedIcon fontSize="medium" />} />
             </StyledFooter>
         )
     }
 }
-
-const mapStateToProps = (state) => ({
-    
-})
 
 const mapDispatchToProps = (dispatch) => ({
     goToFeedPage: () => dispatch(push(routes.feedPage)),
@@ -33,4 +29,4 @@ const mapDispatchToProps = (dispatch) => ({
     goToProfilePage: () => dispatch(push(routes.profilePage))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps) (Footer);
+export default connect(null, mapDispatchToProps)(Footer);

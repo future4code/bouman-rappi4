@@ -20,8 +20,8 @@ export const FeedPage = class FeedPage extends React.Component {
 
     componentDidMount() {
         const token = window.localStorage.getItem("token")
-        if(token === null){
-          this.props.goToLoginPage()
+        if (token === null) {
+            this.props.goToLoginPage()
         } else {
             this.props.getRestaurants()
         };
@@ -29,10 +29,8 @@ export const FeedPage = class FeedPage extends React.Component {
 
     handleInputOnChange = event => {
         const { name, value } = event.target;
-
-        this.setState ({ form: { ...this.state.form, [name]: value }});
+        this.setState({ form: { ...this.state.form, [name]: value } });
     };
-
 
     handleSetRestaurantId = (restaurantId) => {
         this.props.setRestaurantsDetail(restaurantId)
@@ -48,36 +46,36 @@ export const FeedPage = class FeedPage extends React.Component {
 
         return (
             <FeedContainer>
-                <Header title="Rappi4" />   
+                <Header title="Rappi4" />
                 <StyledSubHeader>
-                            <StyledTextField onClick={this.handleSearchInput} type="search" placeholder="Restaurante" variant="outlined"
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <StyledSearchIcon />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                            <StyledAppBar>
-                                <Tabs variant="scrollable">
-                                    {fetchRestaurants && fetchRestaurants.map((restaurant) => (
-                                        <StyledTabText label={restaurant.category} />
-                                    ))}
-                                </Tabs>
-                            </StyledAppBar>                   
-                    </StyledSubHeader> 
-                <StyledMain>         
-                        {fetchRestaurants && fetchRestaurants.map((restaurant) => (
-                            <RestaurantCard 
-                                onClick={() => this.handleSetRestaurantId(restaurant.id)}
-                                key={restaurant.id} 
-                                name={restaurant.name} 
-                                img={restaurant.logoUrl} 
-                                price={restaurant.shipping} 
-                                deliveryTime={restaurant.deliveryTime}
-                            />       
-                        ))}
+                    <StyledTextField onClick={this.handleSearchInput} type="search" placeholder="Restaurante" variant="outlined"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <StyledSearchIcon />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                    <StyledAppBar>
+                        <Tabs variant="scrollable">
+                            {fetchRestaurants && fetchRestaurants.map((restaurant) => (
+                                <StyledTabText label={restaurant.category} />
+                            ))}
+                        </Tabs>
+                    </StyledAppBar>
+                </StyledSubHeader>
+                <StyledMain>
+                    {fetchRestaurants && fetchRestaurants.map((restaurant) => (
+                        <RestaurantCard
+                            onClick={() => this.handleSetRestaurantId(restaurant.id)}
+                            key={restaurant.id}
+                            name={restaurant.name}
+                            img={restaurant.logoUrl}
+                            price={restaurant.shipping}
+                            deliveryTime={restaurant.deliveryTime}
+                        />
+                    ))}
                 </StyledMain>
                 <Footer />
             </FeedContainer>
@@ -97,7 +95,7 @@ const mapDispatchToProps = dispatch => ({
     goToSearchPage: () => dispatch(push(routes.searchPage)),
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(FeedPage);
+export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);
 
 
 

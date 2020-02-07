@@ -17,8 +17,8 @@ const CadastroForm = [
         required: true,
         pattern: "[A-Za-z]",
         variant: "outlined",
-     },
-     {
+    },
+    {
         name: 'email',
         type: 'email',
         label: 'E-mail: ',
@@ -35,7 +35,7 @@ const CadastroForm = [
         required: true,
         variant: "outlined",
     },
-     {
+    {
         name: 'password',
         type: 'password',
         label: 'Senha',
@@ -81,7 +81,7 @@ export class SignUpPage extends React.Component {
 
         return (
             <div>
-                <Header img={BackIcon} onClick={goToLoginPage}/>
+                <Header img={BackIcon} onClick={goToLoginPage} />
                 <StyledHeaderForms>
                     <StyledImgForms src={LogoLogin} />
                 </StyledHeaderForms>
@@ -106,18 +106,13 @@ export class SignUpPage extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-
-})
-
 const mapDispatchToProps = dispatch => ({
     signup: (name, email, cpf, password) => dispatch(signup(name, email, cpf, password)),
     goToLoginPage: () => dispatch(push(routes.loginPage)),
     goToAddressPage: () => dispatch(push(routes.addressFormPage))
-
 })
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(SignUpPage);

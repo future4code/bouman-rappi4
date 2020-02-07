@@ -20,13 +20,12 @@ export class SearchPage extends React.Component {
 
    componentDidMount() {
       const token = window.localStorage.getItem("token")
-      if(token === null){
-        this.props.goToLoginPage()
+      if (token === null) {
+         this.props.goToLoginPage()
       } else {
-          this.props.getRestaurants()
+         this.props.getRestaurants()
       };
-   } 
-
+   }
 
    handleFieldChange = event => {
       this.setState({
@@ -51,24 +50,24 @@ export class SearchPage extends React.Component {
 
       let mapRestaurants = (<p>Não encontramos :(</p>)
 
-      if(search.length === 0){
+      if (search.length === 0) {
          mapRestaurants = (<p>Busque pelo nome do restaurante</p>)
-      } else if(filteredRestaurants.length > 0){
-         mapRestaurants = filteredRestaurants.map((restaurant) => 
-            <RestaurantCard 
+      } else if (filteredRestaurants.length > 0) {
+         mapRestaurants = filteredRestaurants.map((restaurant) =>
+            <RestaurantCard
                onClick={() => this.handleSetRestaurantId(restaurant.id)}
-               key={restaurant.id} 
-               name={restaurant.name} 
-               img={restaurant.logoUrl} 
-               price={restaurant.shipping} 
+               key={restaurant.id}
+               name={restaurant.name}
+               img={restaurant.logoUrl}
+               price={restaurant.shipping}
                deliveryTime={restaurant.deliveryTime}
-            />       
+            />
          )
       }
 
       return (
          <FeedContainer>
-            <Header title="Busca" img={Back} onClick={goToFeedPage}/>
+            <Header title="Busca" img={Back} onClick={goToFeedPage} />
             <StyledSubHeader>
                <FormWrapper>
                   <StyledTextField
@@ -82,7 +81,7 @@ export class SearchPage extends React.Component {
                      InputProps={{
                         startAdornment: (
                            <InputAdornment position="start">
-                                 <StyledSearchIcon />
+                              <StyledSearchIcon />
                            </InputAdornment>
                         ),
                      }}

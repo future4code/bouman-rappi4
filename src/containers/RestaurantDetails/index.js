@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import { routes } from '../Router';
 import { push } from 'connected-react-router';
-import { getRestaurantsDetails, addProductToCart} from '../../action/restaurants';
+import { getRestaurantsDetails, addProductToCart } from '../../action/restaurants';
 import Footer from '../Footer';
 import Loader from '../../components/Loader/Loader';
 import { StyledMainProducts } from '../../style/styled';
@@ -14,7 +14,7 @@ import { placeOrder } from '../../action/order';
 import { Dialog } from '@material-ui/core';
 
 export class RestaurantDetails extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             addCartWindow: false,
@@ -24,7 +24,7 @@ export class RestaurantDetails extends Component {
         }
     }
 
-    componentDidMount () {
+    componentDidMount() {
         const token = window.localStorage.getItem("token")
         if (token === null) {
             this.props.goToLoginPage()
@@ -36,16 +36,16 @@ export class RestaurantDetails extends Component {
     }
 
     handleOpenAddWindow = (productId) => {
-        this.setState({addCartWindow: true, selectedProductId: productId})
+        this.setState({ addCartWindow: true, selectedProductId: productId })
     }
 
     handleCloseAddWindow = () => {
-        this.setState({addCartWindow: false, selectedProductId: ""})
+        this.setState({ addCartWindow: false, selectedProductId: "" })
     }
 
     handleOnChange = event => {
         const { name, value } = event.target;
-        this.setState ({ [name]: value });
+        this.setState({ [name]: value });
     }
 
     handleAddCartProducts = () => {
@@ -54,45 +54,43 @@ export class RestaurantDetails extends Component {
             return product.id === selectedProductId
         })
 
-        const { name, description, price, photoUrl} = selectedProduct
+        const { name, description, price, photoUrl } = selectedProduct
         this.props.addProductToCart(selectedProductId, quantity, name, price, description, photoUrl)
         this.handleCloseAddWindow()
     }
 
-    render() {       
+    render() {
 
         const { selectedRestaurant, gotToFeedPage } = this.props
 
-        console.log( this.props.cartProducts)
-
-        const productsIsReady = !selectedRestaurant.products ? <Loader/> : (
+        const productsIsReady = !selectedRestaurant.products ? <Loader /> : (
             <Fragment>
-                { selectedRestaurant.products.map((product) => 
-                    <ProductCard 
-                        img={product.photoUrl} 
-                        name={product.name} 
-                        description={product.description} 
-                        price={product.price} 
+                {selectedRestaurant.products.map((product) =>
+                    <ProductCard
+                        img={product.photoUrl}
+                        name={product.name}
+                        description={product.description}
+                        price={product.price}
                         onClickOpen={() => this.handleOpenAddWindow(product.id)}
                     />
                 )}
             </Fragment>
-        )   
+        )
 
         return (
             <StyledMainProducts>
-                <Header title={selectedRestaurant.name} img={Back} onClick={gotToFeedPage}/>
-                <SelectedRestaurantCard 
-                    key={selectedRestaurant.id} 
-                    img={selectedRestaurant.logoUrl} 
-                    name={selectedRestaurant.name} 
+                <Header title={selectedRestaurant.name} img={Back} onClick={gotToFeedPage} />
+                <SelectedRestaurantCard
+                    key={selectedRestaurant.id}
+                    img={selectedRestaurant.logoUrl}
+                    name={selectedRestaurant.name}
                     price={selectedRestaurant.shipping}
                     deliveryTime={selectedRestaurant.deliveryTime}
                     address={selectedRestaurant.address}
                     category={selectedRestaurant.category}
                 />
                 {productsIsReady}
-                <Footer/>
+                <Footer />
 
                 <Dialog open={this.state.addCartWindow} onClose={this.handleCloseAddWindow}>
                     <p>Selecione a quantidade desejada</p>
@@ -109,7 +107,7 @@ export class RestaurantDetails extends Component {
                         <option value={10}>10</option>
                     </select>
                     <button onClick={this.handleAddCartProducts}>Adicionar ao Carrinho</button>
-                 </Dialog>
+                </Dialog>
             </StyledMainProducts>
         )
     }
@@ -127,7 +125,6 @@ const mapDispatchToProps = (dispatch) => ({
     gotToFeedPage: () => dispatch(push(routes.feedPage)),
     placeOrder: (id, quantity, paymentMethod) => dispatch(placeOrder(id, quantity, paymentMethod)),
     addProductToCart: (id, quantity, name, price, description, photoUrl) => dispatch(addProductToCart(id, quantity, name, price, description, photoUrl)),
-    
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantDetails)

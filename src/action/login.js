@@ -16,7 +16,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(push(routes.feedPage))
 
   } catch{
-    window.alert("Erro no login")
+    window.alert("Usuario não encontrado")
     dispatch(push(routes.loginPage))
 
   }
@@ -33,9 +33,7 @@ export const signup = (name, email, cpf, password) => async (dispatch) => {
   try {
     const response = await axios.post(`${baseURL}signup`, signupInformation);
     window.localStorage.setItem("token", response.data.token)
-
-    dispatch(push(routes.adressFormPage))
-
+    dispatch(push(routes.addressFormPage))
 
   } catch{
     window.alert("Erro na criação")

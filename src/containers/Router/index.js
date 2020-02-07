@@ -23,7 +23,7 @@ export const routes = {
   cartPage: "/cart",
   restaurantDetails: "/restaurantDetails",
   searchPage: "/feed/search",
-}; 
+};
 
 function Router(props) {
   return (

@@ -4,7 +4,7 @@ import { CardContainer, CardImg, RestaurantName, ShippingAndDeliveryContainer, R
 function SelectedRestaurantCard(props) {
     return (
         <CardContainer key={props.key} onClick={props.onClick}>
-            <CardImg src={props.img}/>
+            <CardImg src={props.img} />
             <RestaurantName>{props.name}</RestaurantName>
             <RestaurantInfoContainer>
                 <CategoryDiv>{props.category}</CategoryDiv>
@@ -13,7 +13,7 @@ function SelectedRestaurantCard(props) {
                     <StyledDiv>Frete R${props.price},00</StyledDiv>
                 </ShippingAndDeliveryContainer>
                 <div>{props.address}</div>
-            </RestaurantInfoContainer> 
+            </RestaurantInfoContainer>
         </CardContainer>
     )
 }

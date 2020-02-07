@@ -2,16 +2,13 @@ import React from 'react';
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-// import Loader from "../../components/Loader/Loader";
 import { StyledImgForms, StyledButtonForms, LoginWrapper, StyledTextField, StyledHeaderForms, SignUpButton } from "../../style/styled";
 import LogoLogin from "../../imagens/ícones/logo-future-eats-invert.png";
 import { login } from "../../action/login"
 
-
 export class LoginPage extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             email: "",
             password: ""
@@ -20,24 +17,24 @@ export class LoginPage extends React.Component {
 
     handleChange = event => {
         this.setState({
-          [event.target.name]: event.target.value
+            [event.target.name]: event.target.value
         })
-      }
-    
-      handleSubmit = (event) => {
+    }
+
+    handleSubmit = (event) => {
         event.preventDefault();
         const { email, password } = this.state
         this.props.login(email, password)
-      }
+    }
 
     render() {
 
         const { goToSignUpPage } = this.props
-        
+
         return (
             <div>
                 <StyledHeaderForms>
-                    <StyledImgForms src={LogoLogin}/>
+                    <StyledImgForms src={LogoLogin} />
                 </StyledHeaderForms>
                 <LoginWrapper onSubmit={this.handleSubmit}>
                     <h3>Entrar</h3>
@@ -66,9 +63,9 @@ export class LoginPage extends React.Component {
             </div>
         )
     }
-} 
+}
 
-const mapDispatchToProps = dispatch =>({
+const mapDispatchToProps = dispatch => ({
     login: (email, password) => dispatch(login(email, password)),
     goToSignUpPage: () => dispatch(push(routes.signUpPage)),
 })
@@ -76,4 +73,4 @@ const mapDispatchToProps = dispatch =>({
 export default connect(
     null,
     mapDispatchToProps
-) (LoginPage);
+)(LoginPage);

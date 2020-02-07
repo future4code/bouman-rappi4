@@ -99,11 +99,11 @@ export const HistoricParagraph = styled.p`
     padding-left: 10px;
     `
 
- export const HistoricLine = styled.hr`
+export const HistoricLine = styled.hr`
     width: 95%;
     color: black;
     `
-    
+
 export const ContainerOrderCard = styled.div`
     font-family: Roboto;
     width: 95%;
@@ -152,7 +152,7 @@ export const SubtotalOrder = styled.p`
     letter-spacing: -0.39px;
     `
 
-    //  quando nao tem pedidos anteriores
+//  quando nao tem pedidos anteriores
 export const ParagraphOnly = styled.p`
     font-size: 16px;
     font-style: normal;
