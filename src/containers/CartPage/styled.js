@@ -23,17 +23,20 @@ export const CardAdressSection = styled.section `
     padding: 10px;
     position: fixed;
     top: 30px;
+    z-index: 2;
 `
 
 export const CardMain = styled.main`
     width: 100%;
     min-height: 230px;
-    position: relative;
-    top: 120px;
+    position: fixed;
+    bottom: 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    background-color: #ffffff;
+    z-index: 2;
 `
 
 export const ShippingContainer = styled.div `
@@ -58,8 +61,9 @@ export const StyledButtonConfirm = styled(Button) `
     cursor: pointer;
     width: 90%;
     background-color: #E86E5A; 
-    position: absolute;
+    position: fixed;
     bottom: 70px;
+    z-index: 3;
     :hover {
         border: 1px solid white;
         background-color: #E86E5A;
