@@ -10,7 +10,7 @@ import { FeedContainer, StyledSubHeader, StyledTextField, StyledMain, StyledSear
 import { routes } from '../Router';
 import RestaurantCard from '../../components/RestaurantCard'
 
-class FeedPage extends React.Component {
+export const FeedPage = class FeedPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

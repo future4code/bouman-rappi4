@@ -3,22 +3,22 @@
 exports[`teste componente login renders correctly 1`] = `
 <div>
   <header
-    className="sc-bxivhb gtoxgU"
+    className="sc-EHOje eiriIZ"
   >
     <img
-      className="sc-gzVnrw idBtcu"
+      className="sc-dnqmqq knXpJk"
       src="logo-future-eats-invert.png"
     />
   </header>
   <form
-    className="sc-EHOje cDZqRK"
+    className="sc-bZQynM bmtTsa"
     onSubmit={[Function]}
   >
     <h3>
       Entrar
     </h3>
     <div
-      className="MuiFormControl-root-1 sc-ifAKCX gROZYA"
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
       color="primary"
     >
       <label
@@ -76,7 +76,7 @@ exports[`teste componente login renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1 sc-ifAKCX gROZYA"
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
     >
       <label
         className="MuiFormLabel-root-16 MuiFormLabel-required-21 MuiInputLabel-required-9 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-outlined-15"
@@ -133,7 +133,7 @@ exports[`teste componente login renders correctly 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-81 MuiButton-root-55 MuiButton-text-57 MuiButton-flat-60 sc-bZQynM AZLqJ"
+      className="MuiButtonBase-root-81 MuiButton-root-55 MuiButton-text-57 MuiButton-flat-60 sc-htoDjs iNysJe"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -160,7 +160,9 @@ exports[`teste componente login renders correctly 1`] = `
     </button>
     <span>
       Não possui Cadastro?
-      <button>
+      <button
+        className="sc-gzVnrw XTpbN"
+      >
         Clique aqui.
       </button>
     </span>

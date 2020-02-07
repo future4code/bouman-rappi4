@@ -2,30 +2,32 @@
 
 exports[`teste componente Loader renders correctly 1`] = `
 <div>
-  <div
-    className="sc-htoDjs dRxFdl"
+  <header
+    className="sc-jKJlTe jlVaSr"
   >
     <img
-      className="sc-dnqmqq hvcBYy"
+      className="sc-ckVGcZ hArevR"
       src="back.png"
     />
-  </div>
+    <p />
+  </header>
   <header
-    className="sc-bxivhb gtoxgU"
+    className="sc-EHOje eiriIZ"
   >
     <img
-      className="sc-gzVnrw idBtcu"
+      className="sc-dnqmqq knXpJk"
       src="logo-future-eats-invert.png"
     />
   </header>
   <form
-    className="sc-EHOje cDZqRK"
+    className="sc-bZQynM bmtTsa"
+    onSubmit={[Function]}
   >
-    <h1>
+    <h3>
       Cadastre-se
-    </h1>
+    </h3>
     <div
-      className="MuiFormControl-root-1 sc-ifAKCX gROZYA"
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
       pattern="[A-Za-z]"
     >
       <label
@@ -73,7 +75,7 @@ exports[`teste componente Loader renders correctly 1`] = `
           aria-invalid={false}
           className="MuiInputBase-input-46 MuiOutlinedInput-input-31"
           disabled={false}
-          name="username"
+          name="name"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -84,7 +86,7 @@ exports[`teste componente Loader renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1 sc-ifAKCX gROZYA"
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
       pattern="[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}"
     >
       <label
@@ -143,7 +145,7 @@ exports[`teste componente Loader renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1 sc-ifAKCX gROZYA"
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
     >
       <label
         className="MuiFormLabel-root-16 MuiFormLabel-required-21 MuiInputLabel-required-9 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-outlined-15"
@@ -190,18 +192,18 @@ exports[`teste componente Loader renders correctly 1`] = `
           aria-invalid={false}
           className="MuiInputBase-input-46 MuiOutlinedInput-input-31 MuiInputBase-inputType-49"
           disabled={false}
-          name="password"
+          name="cpf"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
           placeholder="000.000.000-00"
           required={true}
-          type="password"
+          type="number"
         />
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1 sc-ifAKCX gROZYA"
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
     >
       <label
         className="MuiFormLabel-root-16 MuiFormLabel-required-21 MuiInputLabel-required-9 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-outlined-15"
@@ -259,7 +261,7 @@ exports[`teste componente Loader renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="MuiFormControl-root-1 sc-ifAKCX gROZYA"
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
     >
       <label
         className="MuiFormLabel-root-16 MuiFormLabel-required-21 MuiInputLabel-required-9 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-outlined-15"
@@ -306,7 +308,7 @@ exports[`teste componente Loader renders correctly 1`] = `
           aria-invalid={false}
           className="MuiInputBase-input-46 MuiOutlinedInput-input-31 MuiInputBase-inputType-49"
           disabled={false}
-          name="password"
+          name="confirmPassword"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -317,7 +319,7 @@ exports[`teste componente Loader renders correctly 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-81 MuiButton-root-55 MuiButton-text-57 MuiButton-flat-60 sc-bZQynM AZLqJ"
+      className="MuiButtonBase-root-81 MuiButton-root-55 MuiButton-text-57 MuiButton-flat-60 sc-htoDjs iNysJe"
       disabled={false}
       onBlur={[Function]}
       onContextMenu={[Function]}
@@ -342,10 +344,6 @@ exports[`teste componente Loader renders correctly 1`] = `
         className="MuiTouchRipple-root-84"
       />
     </button>
-    <img
-      className="sc-dnqmqq hvcBYy"
-      src="back.png"
-    />
   </form>
 </div>
 `;
