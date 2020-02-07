@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { ProductCardContainer, ProductImage, ProductInfoContainer, ProductName, ProductDescription, ProductPrice } from './styled'
 import { Dialog } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { placeOrder } from '../../action/order';
 
 class ProductCard extends Component {
     constructor(props) {
@@ -60,4 +62,18 @@ class ProductCard extends Component {
     )}
 }
 
-export default ProductCard
+function mapStateToProps(state) {
+    return {
+       
+    }
+ }
+ 
+ function mapDispatchToProps(dispatch) {
+    return {
+       placeOrder: (id,quantity,paymentMethod) => dispatch(placeOrder(id,quantity,paymentMethod))
+    }
+ }
+ 
+ export default connect(mapStateToProps, mapDispatchToProps)(ProductCard);
+
+

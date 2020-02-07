@@ -27,7 +27,7 @@ export class RestaurantDetails extends Component {
     render() {       
 
         const { selectedRestaurant, gotToFeedPage } = this.props
-
+        console.log("teste details", selectedRestaurant.products )
         const productsIsReady = !selectedRestaurant.products ? <Loader/> : (
             <Fragment>
                 { selectedRestaurant.products.map((product) => 
