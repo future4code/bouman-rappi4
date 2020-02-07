@@ -21,14 +21,14 @@ export const getActiveOrder = () => async (dispatch) => {
 
     try{
         const response = await axios.get(`${baseURL}/active-order`, axiosHeader)
-        dispatch(setOder(response.data.order))
+        dispatch(setOrder(response.data.order))
 
     }catch{
         window.alert("Erro ao capturar Order")
     }
 }
 
-export const placeOrder = (id,quantity,paymentMethod) => {
+export const placeOrder = (id,quantity,paymentMethod) => async (dispatch)=> {
     const token = window.localStorage.getItem("token")
     const axiosHeader = {
         headers: {
@@ -43,7 +43,7 @@ export const placeOrder = (id,quantity,paymentMethod) => {
     }
 
     try{
-        await axios.post(`${baseURL}/restaurants/${idRestaurant}/order`, axiosHeader, placeOrderInfo)
+        await axios.post(`${baseURL}/restaurants/${id}/order`, axiosHeader, placeOrderInfo)
         dispatch(getActiveOrder())
     }catch{
         window.alert("Erro")
