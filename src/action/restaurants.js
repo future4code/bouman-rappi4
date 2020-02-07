@@ -9,6 +9,26 @@ export const setRestaurants = (restaurants) => ({
     }
 })
 
+
+export const addProductToCart = (id, quantity, name, price, description, photoUrl) => ({
+    type: "ADD_PRODUCT_TO_CART",
+    payload: {
+        id,
+        quantity,
+        name,
+        price, 
+        description,
+        photoUrl,
+    }  
+});
+
+export const removeProductFromCart = (id) => ({
+    type: "REMOVE_PRODUCT_FROM_CART",
+    payload: {
+        id,
+    }  
+});
+
 export const getRestaurants = () => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const axiosHeader = {
