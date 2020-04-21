@@ -16,8 +16,8 @@ const EditAddressForm = [
         required: true,
         pattern: "[A-Za-z]",
         variant: "outlined",
-     },
-     {
+    },
+    {
         name: 'number',
         type: 'number',
         label: 'Número',
@@ -25,16 +25,16 @@ const EditAddressForm = [
         required: true,
         pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
         variant: "outlined",
-     },
-     {
-         name: 'complement',
-         type: 'text',
-         label: 'Complemento',
-         placeholder: 'Apto./Bloco',
-         required: true,
-         variant: "outlined",
-     },
-     {
+    },
+    {
+        name: 'complement',
+        type: 'text',
+        label: 'Complemento',
+        placeholder: 'Apto./Bloco',
+        required: true,
+        variant: "outlined",
+    },
+    {
         name: 'neighbourhood',
         type: 'text',
         label: 'Bairro',
@@ -66,29 +66,29 @@ export class EditAddressPage extends React.Component {
         this.state = {
             form: {}
         }
-
     }
+
     componentDidMount() {
         const token = window.localStorage.getItem("token")
-        if(token === null){
-          this.props.goToLoginPage()
+        if (token === null) {
+            this.props.goToLoginPage()
         } else {
             this.props.getFullAddress()
         };
     }
 
-    componentDidUpdate (prevProps) {
-        if (prevProps.edditAddress !== this.props.edditAddress){
-            this.setState({form: this.props.edditAddress})
+    componentDidUpdate(prevProps) {
+        if (prevProps.edditAddress !== this.props.edditAddress) {
+            this.setState({ form: this.props.edditAddress })
         }
     }
 
     handleChange = event => {
         this.setState({
-            form:  {
+            form: {
                 ...this.state.form,
                 [event.target.name]: event.target.value
-            
+
             }
         })
     }
@@ -97,17 +97,14 @@ export class EditAddressPage extends React.Component {
         event.preventDefault();
         const { street, number, neighbourhood, city, state, complement } = this.state.form
         this.props.addAddress(street, number, neighbourhood, city, state, complement)
-        console.log(this.state.form)
     }
 
     render() {
-
-
         const { goToProfilePage, goToAdressPage } = this.props
 
         return (
             <div>
-                <Header title="Editar Endereço" img={BackIcon} onClick={goToProfilePage}/>
+                <Header title="Editar Endereço" img={BackIcon} onClick={goToProfilePage} />
                 <LoginWrapper onSubmit={this.handleSubmit}>
                     {EditAddressForm.map(input => (
                         <StyledTextField
@@ -122,18 +119,15 @@ export class EditAddressPage extends React.Component {
                             variant={input.variant}
                         />
                     ))}
-
-                    
                     <StyledButtonForms type="submit" onClick={goToAdressPage}>Salvar</StyledButtonForms>
                 </LoginWrapper>
             </div>
         )
     }
-}       
+}
 
 const mapStateToProps = state => ({
     edditAddress: state.restaurantsReducer.edditAddress
-
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -141,7 +135,6 @@ const mapDispatchToProps = dispatch => ({
     goToAdressPage: () => dispatch(push(routes.adressFormPage)),
     getFullAddress: () => dispatch(getFullAddress()),
     addAddress: (street, number, neighbourhood, city, state, complement) => dispatch(addAddress(street, number, neighbourhood, city, state, complement)),
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditAddressPage);

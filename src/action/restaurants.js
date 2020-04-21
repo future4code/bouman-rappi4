@@ -9,31 +9,30 @@ export const setRestaurants = (restaurants) => ({
     }
 })
 
-
 export const addProductToCart = (id, quantity, name, price, description, photoUrl) => ({
     type: "ADD_PRODUCT_TO_CART",
     payload: {
         id,
         quantity,
         name,
-        price, 
+        price,
         description,
         photoUrl,
-    }  
+    }
 });
 
 export const removeProductFromCart = (id) => ({
     type: "REMOVE_PRODUCT_FROM_CART",
     payload: {
         id,
-    }  
+    }
 });
 
 export const getRestaurants = () => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const axiosHeader = {
         headers: {
-            auth:token
+            auth: token
         }
     };
 
@@ -41,7 +40,7 @@ export const getRestaurants = () => async (dispatch) => {
         const response = await axios.get(`${baseURL}/restaurants`, axiosHeader);
         dispatch(setRestaurants(response.data.restaurants));
 
-    }catch{
+    } catch{
         window.alert("erro ao mostar os produtos");
 
     }
@@ -69,10 +68,10 @@ export const getRestaurantsDetails = (restaurantId) => async (dispatch) => {
         }
     }
 
-    try{    
+    try {
         const response = await axios.get(`${baseURL}/restaurants/${restaurantId}`, axiosHeader)
         dispatch(setRestaurantDetailsAction(response.data.restaurant))
-    }catch{
+    } catch{
         window.alert("falha ao carregar detalhes")
     }
 

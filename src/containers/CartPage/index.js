@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { CardContainer, CardAdressSection, CardMain, ShippingContainer, StyledH4, SubTitle, TotalContainer, StyledButtonConfirm } from './styled';
-import {FeedContainer, StyledMain} from '../../style/styled'
-import {ParagraphDefaultAdress} from '../../style/profilePage'
+import { FeedContainer, StyledMain } from '../../style/styled'
+import { ParagraphDefaultAdress } from '../../style/profilePage'
 import Footer from '../Footer';
 import Header from '../../components/Header';
 import { push } from 'connected-react-router';
@@ -14,28 +14,19 @@ import { removeProductFromCart } from '../../action/restaurants';
 import ProductCard from '../../components/ProductsCard'
 
 export class CartPage extends Component {
-    constructor(props){
-        super(props);
 
-        this.state={
-
-        }
-    }
-
-    
     render() {
         const { goToFeedPage, cartProduct } = this.props
         const { address } = this.props.getToProfile
 
-        console.log(this.props.cartProduct)
         const cartProductIsReady = cartProduct.length === 0 ? <p>Carrinho vazio</p> : (
             <Fragment>
-                {cartProduct.map((product) => 
-                    <ProductCard 
-                        img={product.photoUrl} 
-                        name={product.name} 
-                        description={product.description} 
-                        price={product.price} 
+                {cartProduct.map((product) =>
+                    <ProductCard
+                        img={product.photoUrl}
+                        name={product.name}
+                        description={product.description}
+                        price={product.price}
                         quantity={product.quantity}
                         onClickOpen={() => this.handleOpenAddWindow(product.id)}
                     />
@@ -44,7 +35,7 @@ export class CartPage extends Component {
         )
         return (
             <FeedContainer>
-                <Header title="Meu Carrinho"/>
+                <Header title="Meu Carrinho" />
                 <CardAdressSection>
                     <ParagraphDefaultAdress>Endereço de entrega</ParagraphDefaultAdress>
                     <p>{address}</p>
@@ -61,9 +52,9 @@ export class CartPage extends Component {
                 <SubTitle>
                     <StyledH4>Forma de Pagamento</StyledH4>
                 </SubTitle>
-                <CustomizedRadios/>
+                <CustomizedRadios />
                 <StyledButtonConfirm onClick={goToFeedPage}>Confirmar</StyledButtonConfirm>
-                <Footer/>
+                <Footer />
             </FeedContainer>
         )
     }

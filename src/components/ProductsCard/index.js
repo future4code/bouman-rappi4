@@ -2,10 +2,10 @@ import React from 'react';
 import { ProductCardContainer, ProductImage, ProductInfoContainer, ProductName, ProductDescription, ProductPrice, StyledAddButton, StyledSpan } from './styled'
 import { Dialog } from '@material-ui/core';
 
-function ProductCard (props) {
+function ProductCard(props) {
     return (
         <ProductCardContainer>
-            <ProductImage alt="image" src={props.img}/>
+            <ProductImage alt="image" src={props.img} />
             <ProductInfoContainer>
                 <ProductName>
                     {props.name}
@@ -15,18 +15,18 @@ function ProductCard (props) {
                 </ProductDescription>
                 <ProductPrice>
                     R$ {props.price}
-                </ProductPrice>  
+                </ProductPrice>
             </ProductInfoContainer>
-            <StyledAddButton onClick={props.onClickOpen}> 
-                Adicionar         
+            <StyledAddButton onClick={props.onClickOpen}>
+                Adicionar
             </StyledAddButton>
             <StyledSpan>
                 {props.quantity}
             </StyledSpan>
-        </ProductCardContainer>  
+        </ProductCardContainer>
     )
 }
- 
- export default(ProductCard);
+
+export default (ProductCard);
 
 

@@ -3,49 +3,47 @@ import axios from 'axios'
 const baseURL = "https://us-central1-missao-newton.cloudfunctions.net/rappi4";
 
 
-export const setOrder = (order) =>({
+export const setOrder = (order) => ({
     type: "SET_ORDER",
     payload: {
         order,
     }
 })
 
-
 export const getActiveOrder = () => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const axiosHeader = {
         headers: {
-            auth:token,
+            auth: token,
         }
     }
 
-    try{
+    try {
         const response = await axios.get(`${baseURL}/active-order`, axiosHeader)
         dispatch(setOrder(response.data.order))
 
-    }catch{
+    } catch{
         window.alert("Erro ao capturar Order")
     }
 }
 
-export const placeOrder = (id,quantity,paymentMethod) => async (dispatch)=> {
+export const placeOrder = (id, quantity, paymentMethod) => async (dispatch) => {
     const token = window.localStorage.getItem("token")
     const axiosHeader = {
         headers: {
             auth: token
         }
     }
-
     const placeOrderInfo = {
         id,
         quantity,
         paymentMethod,
     }
 
-    try{
+    try {
         await axios.post(`${baseURL}/restaurants/${id}/order`, axiosHeader, placeOrderInfo)
         dispatch(getActiveOrder())
-    }catch{
+    } catch{
         window.alert("Erro")
     }
 

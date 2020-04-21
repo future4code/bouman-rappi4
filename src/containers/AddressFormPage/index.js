@@ -16,8 +16,8 @@ const AddressForm = [
         required: true,
         pattern: "[A-Za-z]",
         variant: "outlined",
-     },
-     {
+    },
+    {
         name: 'number',
         type: 'number',
         label: 'Número',
@@ -25,16 +25,16 @@ const AddressForm = [
         required: true,
         pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
         variant: "outlined",
-     },
-     {
-         name: 'complement',
-         type: 'text',
-         label: 'Complemento',
-         placeholder: 'Apto./Bloco',
-         required: true,
-         variant: "outlined",
-     },
-     {
+    },
+    {
+        name: 'complement',
+        type: 'text',
+        label: 'Complemento',
+        placeholder: 'Apto./Bloco',
+        required: true,
+        variant: "outlined",
+    },
+    {
         name: 'neighbourhood',
         type: 'text',
         label: 'Bairro',
@@ -63,12 +63,10 @@ const AddressForm = [
 export class AddressFormPage extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             form: {}
         }
     }
-
 
     handleChange = event => {
         this.setState({
@@ -79,21 +77,20 @@ export class AddressFormPage extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const { street, number, neighbourhood, city, state, complement } = this.state
-        this.props.addAdress(street, number, neighbourhood, city, state, complement)
-        
+        this.props.addAddress(street, number, neighbourhood, city, state, complement)
     }
 
     render() {
         const { goToSignUpPage } = this.props
-        
+
         return (
             <div>
-                <Header img={BackIcon} onClick={goToSignUpPage}/>
+                <Header img={BackIcon} onClick={goToSignUpPage} />
                 <StyledHeaderForms>
                     <h3>Meu endereço</h3>
                 </StyledHeaderForms>
                 <LoginWrapper onSubmit={this.handleSubmit}>
-                    {AddressForm .map(input =>(
+                    {AddressForm.map(input => (
                         <StyledTextField
                             onChange={this.handleChange}
                             name={input.name}
@@ -110,13 +107,9 @@ export class AddressFormPage extends React.Component {
             </div>
         )
     }
-} 
+}
 
-const mapStateToProps = state =>({
-
-})
-
-const mapDispatchToProps = dispatch =>({
+const mapDispatchToProps = dispatch => ({
     addAddress: (street, number, neighbourhood, city, state, complement) => dispatch(addAddress(street, number, neighbourhood, city, state, complement)),
     goToLoginPage: () => dispatch(push(routes.loginPage)),
     goToSignUpPage: () => dispatch(push(routes.signUpPage)),
@@ -124,6 +117,6 @@ const mapDispatchToProps = dispatch =>({
 })
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
-) (AddressFormPage);
+)(AddressFormPage);
