@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`teste componente login renders correctly 1`] = `
+<div>
+  <header
+    className="sc-EHOje eiriIZ"
+  >
+    <img
+      className="sc-dnqmqq knXpJk"
+      src="logo-future-eats-invert.png"
+    />
+  </header>
+  <form
+    className="sc-bZQynM bmtTsa"
+    onSubmit={[Function]}
+  >
+    <h3>
+      Entrar
+    </h3>
+    <div
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
+      color="primary"
+    >
+      <label
+        className="MuiFormLabel-root-16 MuiFormLabel-required-21 MuiInputLabel-required-9 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-outlined-15"
+        data-shrink={false}
+      >
+        E-mail
+        <span
+          className="MuiFormLabel-asterisk-22"
+        >
+           *
+        </span>
+      </label>
+      <div
+        className="MuiInputBase-root-36 MuiOutlinedInput-root-23 MuiInputBase-formControl-37"
+        onClick={[Function]}
+      >
+        <fieldset
+          aria-hidden={true}
+          className="MuiPrivateNotchedOutline-root-53 MuiOutlinedInput-notchedOutline-30"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="MuiPrivateNotchedOutline-legend-54"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input-46 MuiOutlinedInput-input-31 MuiInputBase-inputType-49"
+          disabled={false}
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={true}
+          type="email"
+        />
+      </div>
+    </div>
+    <div
+      className="MuiFormControl-root-1 sc-jzJRlG mhIOd"
+    >
+      <label
+        className="MuiFormLabel-root-16 MuiFormLabel-required-21 MuiInputLabel-required-9 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-outlined-15"
+        data-shrink={false}
+      >
+        Password
+        <span
+          className="MuiFormLabel-asterisk-22"
+        >
+           *
+        </span>
+      </label>
+      <div
+        className="MuiInputBase-root-36 MuiOutlinedInput-root-23 MuiInputBase-formControl-37"
+        onClick={[Function]}
+      >
+        <fieldset
+          aria-hidden={true}
+          className="MuiPrivateNotchedOutline-root-53 MuiOutlinedInput-notchedOutline-30"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="MuiPrivateNotchedOutline-legend-54"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+        <input
+          aria-invalid={false}
+          className="MuiInputBase-input-46 MuiOutlinedInput-input-31 MuiInputBase-inputType-49"
+          disabled={false}
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={true}
+          type="password"
+        />
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-81 MuiButton-root-55 MuiButton-text-57 MuiButton-flat-60 sc-htoDjs iNysJe"
+      disabled={false}
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="submit"
+    >
+      <span
+        className="MuiButton-label-56"
+      >
+        Entrar
+      </span>
+      <span
+        className="MuiTouchRipple-root-84"
+      />
+    </button>
+    <span>
+      Não possui Cadastro?
+      <button
+        className="sc-gzVnrw XTpbN"
+      >
+        Clique aqui.
+      </button>
+    </span>
+  </form>
+</div>
+`;

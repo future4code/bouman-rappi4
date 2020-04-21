@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`teste componente Header renders correctly 1`] = `
+<header
+  className="sc-bwzfXH RIwcK"
+>
+  <img
+    className="sc-bdVaJa gSjNzR"
+  />
+  <p />
+</header>
+`;
